@@ -5,10 +5,29 @@ describe EventsController do
 
   describe "GET #index"  do
     it "responds with status code 200" do
-      get :index
-      expect(response).to_have_http_status 200
+      get :index, { group_id: 1 }
+      expect(response).to have_http_status 200
     end
-
-
   end
+
+  describe "GET #show"  do
+    it "responds with status code 200" do
+      get :show, { group_id: 1, id: 1 }
+      expect(response).to have_http_status 200
+    end
+  end
+
+  describe "GET #new"  do
+    it "responds with status code 200" do
+      get :new, { group_id: 1 }
+      expect(response).to have_http_status 200
+    end
+  end
+
+  # describe "POST #create"  do
+  #   it "responds with status code 200" do
+  #     post :create, { group_id: 1, id: 1 }
+  #     expect(response).to have_http_status 200
+  #   end
+  # end
 end
