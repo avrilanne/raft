@@ -1,8 +1,8 @@
 class CreateMemberships < ActiveRecord::Migration
   def change
     create_table :memberships do |t|
-      t.integer :raft_id
-      t.integer :user_id
+      t.integer :group_id, null: false
+      t.integer :user_id, null: false
       t.string :fee
       t.boolean :paid
 

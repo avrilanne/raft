@@ -1,9 +1,9 @@
 class CreateGroups < ActiveRecord::Migration
   def change
     create_table :groups do |t|
-      t.integer :admin_id
-      t.integer :event_id
-      t.string :name
+      t.integer :admin_id, null: false
+      t.integer :event_id, null: false
+      t.string :name, null: false
 
       t.timestamps null: false
     end
