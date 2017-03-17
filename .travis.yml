@@ -1,7 +1,7 @@
 
 language: ruby
 rvm:
-  - 2.0.0
+  - 2.1.0
 postgres:
   adapter: postgresql
   database: raft_test
@@ -15,3 +15,5 @@ script:
 
 before_script:
   - "psql -c 'create database raft_test;' -U postgres"
+
+sudo: required
