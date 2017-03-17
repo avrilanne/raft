@@ -172,7 +172,8 @@ DEPENDENCIES
   jquery-rails
   pg (~> 0.15)
   rails (= 4.2.5)
-  rspec-rails (~> 3.5)
+  rake (~> 12.0.0)
+  rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
