@@ -25,6 +25,20 @@ describe UsersController do
         expect(response).to have_http_status 302
       end
     end
+
+    context "when invalid params are passed" do
+      it "renders new template" do
+        post :create, { user: { first_name: "Jam", last_name: "Nokogiri", username: "jamoko", email: "jamoko@gmail.com"} }
+        expect(response).to render_template(:new)
+      end
+
+      it "responds with status code 422" do
+        post :create, { user: { first_name: "Jam", last_name: "Nokogiri", username: "jamoko", email: "jamoko@gmail.com"} }
+        expect(response).to have_http_status 422
+      end
+
+    end
+
   end
 
   describe "GET #show" do
@@ -32,6 +46,12 @@ describe UsersController do
       get :show, { id: 1 }
       expect(response).to have_http_status 200
     end
+
+    it "renders the :show template" do
+      get :show, { id: 1}
+      expect(response).to render_template(:show)
+    end
+
   end
 end
 

@@ -8,12 +8,17 @@ class UsersController < ApplicationController
     if @user.save
       set_user(@user)
       redirect_to user_path(@user)
+    else
+      render 'new', status: 422
     end
+
   end
 
 
   def show
+
     @show_user = find_user
+
   end
 
 
