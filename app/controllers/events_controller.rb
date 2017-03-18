@@ -2,7 +2,6 @@ class EventsController < ApplicationController
 
   def index
     @games = Event.where("group_id = params[:group_id")
-
   end
 
   def show
@@ -16,7 +15,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      redirect_to group_event
+      redirect_to group_events_path
     else
       render :new, status: 422
     end
@@ -29,8 +28,9 @@ class EventsController < ApplicationController
   end
 
   private
+
   def event_params
-    params.require(:event).permit(:name, :id)
+    params.require(:event).permit(:group_id, :host_id, :name, :location, :date, :time, :id)
   end
 
 end
