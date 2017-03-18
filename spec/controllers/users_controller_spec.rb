@@ -16,6 +16,8 @@ describe UsersController do
     end
   end
 
+
+
   describe "POST #create" do
     context "when valid params are passed" do
       it "responds with status code 302" do
@@ -25,7 +27,12 @@ describe UsersController do
     end
   end
 
-
+  describe "GET #show" do
+    it "responds with status code 200" do
+      get :show, { id: 1 }
+      expect(response).to have_http_status 200
+    end
+  end
 end
 
 
