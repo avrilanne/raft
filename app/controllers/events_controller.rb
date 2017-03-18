@@ -1,8 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @games = Event.where("group_id = params[:group_id")
-
+    @events = Event.where("group_id = params[:group_id")
   end
 
   def show
@@ -10,13 +9,20 @@ class EventsController < ApplicationController
   end
 
   def new
+    p params
+    @event = Event.new
+    # @question1 = Question.new
+    # @question2 = Question.new
+    # @Question3 =
+    @group = Group.find_by(id: params[:group_id])
   end
 
   def create
+
     @event = Event.new(event_params)
 
     if @event.save
-      redirect_to group_event
+      redirect_to group_events_path
     else
       render :new, status: 422
     end
@@ -25,12 +31,16 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     event.destroy
-    redirect_to events_url, notice: 'event was successfully destroyed.'
+    redirect_to group_events_path, notice: 'Event was successfully destroyed.'
   end
 
   private
+
   def event_params
-    params.require(:event).permit(:name, :id)
+    params.require(:event).permit(:host_id, :name, :location, :date, :time)
   end
 
+  def group_params
+
+  end
 end
