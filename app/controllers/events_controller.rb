@@ -30,7 +30,10 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:group_id, :host_id, :name, :location, :date, :time, :id)
+    params.require(:event).permit(:host_id, :name, :location, :date, :time)
   end
 
+  def group_params
+
+  end
 end
