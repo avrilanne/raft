@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe EventsController do
   let!(:event) { Event.create!(location: "space", date: "yellow", time: "hello", name: "It Dinner Yo", host_id: 1, group_id: 1)}
-  let!(:group) { Group.create!(admin_id: 1, event_id: 1, name: "yolo")}
+  let!(:group) { Group.create!(admin_id: 1, name: "yolo")}
 
   describe "GET #index"  do
     it "responds with status code 200" do
