@@ -15,6 +15,5 @@ describe Event do
       event.save
       expect(event.name).to eq "YOLO TIME"
     end
-
   end
 end
