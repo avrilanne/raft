@@ -3,7 +3,12 @@ Rails.application.routes.draw do
     resources :events
   end
 
-  resources :users, except: [:index, :destroy, :update]
+
+  resources :users, except: [:index, :destroy, :update] do
+    resources :memberships
+  end
+
   get '/users' => 'users#index', as: '_users'
   root 'sessions#new'
-  end
+
+end
