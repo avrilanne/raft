@@ -3,6 +3,6 @@ Rails.application.routes.draw do
     resources :events, only: [:index]
   end
 
-  resources :users
+  resources :users, except: [:destry, :update]
   root 'sessions#new'
   end
