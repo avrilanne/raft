@@ -14,15 +14,9 @@ class UsersController < ApplicationController
 
   end
 
-
   def show
-
     @show_user = find_user
-
   end
-
-
-
 
   private
   def user_params
