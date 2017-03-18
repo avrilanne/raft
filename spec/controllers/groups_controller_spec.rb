@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe GroupsController do
 
-  let!(:group) { Group.new(name: "yolo group", admin_id: 1 )}
+  let!(:group) { Group.create(name: "yolo group", admin_id: 1 )}
   let!(:current_user) {User.find_by(id: 1)}
 
   describe "GET #new" do
@@ -38,4 +38,28 @@ describe GroupsController do
       end
     end
   end
+
+  describe "delete #destroy"  do
+      it "deletes event" do
+        delete :destroy, { id: group.id }
+        expect(response).to have_http_status 302
+      end
+
+      it "destroys the requested group" do
+        expect { delete(:destroy, { id: group.id }) }.to change(Group, :count).by(-1)
+      end
+
+      it "sets a notice that the event was destroyed" do
+        delete :destroy, { id: group.id }
+        expect(flash[:notice]).to match /Group was successfully destroyed./
+      end
+
+      it "redirects to the groups list" do
+        delete :destroy, { id: group.id }
+        expect(response).to redirect_to groups_path
+      end
+
+    end
+
+
 end

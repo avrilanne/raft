@@ -16,9 +16,23 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show
+
+    @group = Group.find_by(id: params[:id])
+  end
+
+
+  def destroy
+    group = Group.find_by(id: params[:id])
+    group.destroy
+    redirect_to groups_path, notice: 'Group was successfully destroyed.'
+  end
+
 private
 
   def group_params
     params.require(:group).permit(:name, :admin_id)
   end
 end
+
+

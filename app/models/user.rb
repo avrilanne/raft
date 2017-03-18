@@ -10,4 +10,14 @@ has_secure_password
 
 validates :first_name, :last_name, :username, :email, presence: true
 validates :email, :username, uniqueness: true
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['username LIKE ?', "%#{search}%"])
+    else
+      @message = ["no users found"]
+      find(:all)
+    end
+  end
+
 end
