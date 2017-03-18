@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :groups do
-    resources :events, only: [:index]
+    resources :events
   end
 
   resources :users, except: [:destry, :update]
