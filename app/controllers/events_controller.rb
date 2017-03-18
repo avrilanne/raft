@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @games = Event.where("group_id = params[:group_id")
+    @events = Event.where("group_id = params[:group_id")
   end
 
   def show
@@ -9,6 +9,8 @@ class EventsController < ApplicationController
   end
 
   def new
+    p params
+    render :new
   end
 
   def create
@@ -24,7 +26,7 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     event.destroy
-    redirect_to events_url, notice: 'event was successfully destroyed.'
+    redirect_to group_events_path, notice: 'event was successfully destroyed.'
   end
 
   private

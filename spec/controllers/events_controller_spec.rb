@@ -23,6 +23,10 @@ describe EventsController do
       get :new, { group_id: 1 }
       expect(response).to have_http_status 200
     end
+
+    it "renders the new events template" do
+      get :new, { group_id: 1 }
+      expect(response).to render_template(:new)
   end
 
   # describe "POST #create"  do
@@ -37,5 +41,5 @@ describe EventsController do
   #     post :create, { group_id: 1 }
   #     expect(response).to have_http_status 422
   #   end
-  # end
+  end
 end
