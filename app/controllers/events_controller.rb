@@ -10,10 +10,15 @@ class EventsController < ApplicationController
 
   def new
     p params
-    render :new
+    @event = Event.new
+    # @question1 = Question.new
+    # @question2 = Question.new
+    # @Question3 =
+    @group = Group.find_by(id: params[:group_id])
   end
 
   def create
+
     @event = Event.new(event_params)
 
     if @event.save
@@ -26,7 +31,7 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     event.destroy
-    redirect_to group_events_path, notice: 'event was successfully destroyed.'
+    redirect_to group_events_path, notice: 'Event was successfully destroyed.'
   end
 
   private
