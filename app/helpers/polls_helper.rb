@@ -18,6 +18,6 @@ module PollsHelper
         @highest_name = choice.title
       end
     end
-    return "#{@highest_name} with a vote count of #{@num}"
+    return "#{@highest_name}"
   end
 end

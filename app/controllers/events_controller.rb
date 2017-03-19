@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find_by(id: params[:id])
     @poll = Poll.find_by(event_id: @event.id)
+    @events_polls = @event.polls
   end
 
   def new
