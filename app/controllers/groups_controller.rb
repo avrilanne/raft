@@ -13,7 +13,8 @@ class GroupsController < ApplicationController
       current_user.groups << @group
       redirect_to group_path(@group)
     else
-      render 'new', status: 422
+      @errors = @group.errors.full_messages
+      render '_new', status: 422
     end
   end
 
@@ -21,7 +22,6 @@ class GroupsController < ApplicationController
     @group = Group.find_by(id: params[:id])
     @members = @group.members
     @events = @group.events
-
     # respond_to do |format|
     #   format.html {redirect_to group_path(@group)}
     #   format.js {}
