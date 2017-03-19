@@ -5,6 +5,8 @@
 <%= @event.name %>
 </h1>
 <br>
-<%= @poll.question %>
+<p> Vote on Location! </p>
 <%= render partial: 'polls/answer_form' %>
 </div>
+<br>
+<p> The leading answer is <%= highest_choice(@poll) %> </p>
