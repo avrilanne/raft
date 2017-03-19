@@ -1,3 +1,2 @@
-require 'figaro'
 gmail_username: 'raftproject2017'
 gmail_password: 'alamdarmusavi'
