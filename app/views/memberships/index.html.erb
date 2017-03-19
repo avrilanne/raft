@@ -1,8 +1,10 @@
 <h1>Rafts youre a ridin'</h1>
 <ul>
 <% @groups.each do |group| %>
-<p><%= link_to group.name, group_path(group)  %></p>
+<p><%= link_to group.name, group_path(group), :class =>"btn btn-link" %></p>
+
 <% end  %>
+<div class="container">
 </ul>
 
   <p><%= current_user.first_name.capitalize %>, Check Out Your Invites!</p>
@@ -13,5 +15,9 @@
     <% end %>
   </ul>
   <% end  %>
+<%= render partial: '/groups/new' %>
+
+</div>
+
 
 
