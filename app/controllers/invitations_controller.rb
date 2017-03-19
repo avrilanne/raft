@@ -11,9 +11,9 @@ class InvitationsController < ApplicationController
       @users = User.all
     end
   end
-  
+
   def show
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find_by(id: current_user.id)
     @invitations = @user.invitations
   end
 
@@ -21,7 +21,7 @@ class InvitationsController < ApplicationController
     @group = Group.find_by(id: params[:group_id])
     @invitation = Invitation.new(invitation_params)
       if @invitation.save
-        InvitationMailer.invitation_email(@invitation).deliver_now
+        InvitationMailer.invitation_email(@invitation).deliver
         redirect_to group_invitation_path(@group, @invitation)
       else
         format.html { render action: 'new'}
@@ -31,4 +31,5 @@ class InvitationsController < ApplicationController
   private
   def invitation_params
     params.require(:invitation).permit(:sender_id, :recipient_id)
+  end
 end
