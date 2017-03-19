@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :choices, through: :answers
   has_many :invitations, class_name: "Invitation", foreign_key: :recipient_id
   has_many :sent_invites, class_name: "Invitation", foreign_key: :sender_id
+  has_many :points
 
   has_secure_password
 
