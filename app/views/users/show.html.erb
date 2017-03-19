@@ -1,12 +1,23 @@
   <h2> <%= @user.first_name %> </h2>
 
-<div class='container'>
-  <p>Rafts You're Ridin'</p>
+<h1>Rafts youre a ridin'</h1>
+<ul>
+<% @groups.each do |group| %>
+<p><%= link_to group.name, group_path(group), :class =>"btn btn-link" %></p>
+
+<% end  %>
+<div class="container">
+</ul>
+
+  <p><%= current_user.first_name.capitalize %>, Check Out Your Invites!</p>
   <ul>
-    <% @user.groups.each do |group| %>
-      <li>
-        <%= group.name %>
-      </li>
+    <% current_user.memberships.each do |membership| %>
+    <% if membership.paid == nil %>
+    <li><%= Group.find_by(id: membership.group_id).name  %></li>
     <% end %>
   </ul>
+  <% end  %>
+<%= render partial: '/groups/new' %>
+
 </div>
+

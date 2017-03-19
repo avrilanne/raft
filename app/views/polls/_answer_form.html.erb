@@ -1,3 +1,4 @@
+<div class="form-group">
 <%= form_tag answers_path, method: :post, id: 'answer_form' do  %>
 <% hidden_field_tag 'poll[id], @poll.id'  %>
 <%= render partial: '/polls/choice', collection: @poll.choices, as: :choice%>
@@ -7,3 +8,4 @@
 <!-- <p> You have already answered </p> -->
 <%= submit_tag 'Answer', class: 'btn btn-primary' %>
 <% end %>
+<div>

@@ -33,6 +33,7 @@ gem 'dwolla-ruby', "~> 2.5.1"
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'rake', '~> 12.0.0'
+gem 'jquery-ui-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
