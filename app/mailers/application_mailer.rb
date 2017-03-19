@@ -1,4 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: current_user.email
+  # if logged_in?
+  #   default from: current_user.email
+  # end
   layout 'mailer'
 end
