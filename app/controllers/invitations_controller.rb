@@ -18,8 +18,12 @@ class InvitationsController < ApplicationController
   end
 
   def create
+    puts "THESE ARE THE PARAMS"
+    p invitation_params
+    p params
     @group = Group.find_by(id: params[:group_id])
     @invitation = Invitation.new(invitation_params)
+    @invitation.group_id = params[:group_id]
       if @invitation.save
         InvitationMailer.invitation_email(@invitation).deliver
         redirect_to group_invitation_path(@group, @invitation)
