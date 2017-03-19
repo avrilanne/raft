@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       set_user(@user)
       redirect_to user_path(@user)
     else
+      @errors = @user.errors.full_messages
       render 'new', status: 422
     end
   end

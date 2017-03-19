@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
       set_user(user)
       redirect_to user_path(user)
     else
-      render 'new', status: 422
+      @errors = ["Login Failed"]
+      render partial: 'sessions/new' , status: 422
     end
   end
 
