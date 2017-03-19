@@ -5,7 +5,7 @@ class InvitationMailer < ApplicationMailer
     @invitation = invitation
     @sender = invitation.sender
     @recipient = invitation.recipient
-    @url = "localhost:3000/sessions/new"
+    @url = "https://raft2k17.herokuapp.com/"
     mail(to: @recipient.email, subject: "You have been invited to a Raft")
   end
 
