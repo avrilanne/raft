@@ -2,10 +2,11 @@
 <ul>
   <% @users.each do |user| %>
       <li><a href="/users/<%= user.id %>"><%= user.username %></a>
-        <%= form_for :user, url: user_invitations_path(user) do |f| %>
+        <%= form_for :user, url: "/users/#{user.id}/memberships", method: "post" do |f| %>
+        <%= f.collection_select :group_id, current_user.groups, :id, :name %>
         <%= f.submit "Send Invite" %>
       </li>
-
       <% end  %>
   <% end %>
 </ul>
+
