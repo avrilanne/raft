@@ -5,4 +5,13 @@
 <% end  %>
 </ul>
 
+  <p><%= current_user.first_name.capitalize %>, Check Out Your Invites!</p>
+  <ul>
+    <% current_user.memberships.each do |membership| %>
+    <% if membership.paid == nil %>
+    <li><%= Group.find_by(id: membership.group_id).name  %></li>
+    <% end %>
+  </ul>
+  <% end  %>
+
 
