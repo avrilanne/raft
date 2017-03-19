@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  invitable named_by: :name
+  # invitable named_by: :name
 
   has_many :memberships
   has_many :members, through: :memberships, source: :user
@@ -8,4 +8,5 @@ class Group < ActiveRecord::Base
   belongs_to :admin, foreign_key: :admin_id
 
   validates :admin_id, :name, presence: true
+
 end

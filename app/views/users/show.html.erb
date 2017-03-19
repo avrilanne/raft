@@ -1,1 +1,12 @@
-  <h2> Some Users Profile</h2>
+  <h2> <%= @user.first_name %> </h2>
+
+<div class='container'>
+  <p>Rafts You're Ridin'</p>
+  <ul>
+    <% @user.groups.each do |group| %>
+      <li>
+        <%= group.name %>
+      </li>
+    <% end %>
+  </ul>
+</div>

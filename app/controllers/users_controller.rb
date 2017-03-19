@@ -19,17 +19,17 @@ class UsersController < ApplicationController
     else
       render 'new', status: 422
     end
-
   end
 
   def show
-    @show_user = find_user
+    @user = find_user
   end
 
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :username, :email, :password)
   end
+
   def find_user
     @user = User.find_by(id: params[:id])
   end

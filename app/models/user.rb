@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :username, :email, presence: true
   validates :email, :username, uniqueness: true
 
-
   def answered_for?(poll)
     answers.any? {|v| v.choice.poll == poll}
   end
