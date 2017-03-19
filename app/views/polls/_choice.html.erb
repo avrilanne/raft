@@ -1,0 +1,9 @@
+<%= content_tag(:label) do %>
+<br>
+<% unless current_user.answered_for?(@poll)  %>
+<%= radio_button_tag 'choice[id]', choice.id %>
+<br>
+<% end %>
+<%= choice.title %>
+<br>
+<% end %>

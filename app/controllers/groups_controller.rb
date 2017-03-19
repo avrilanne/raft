@@ -19,6 +19,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find_by(id: params[:id])
     @members = @group.members
+    @events = @group.events
   end
 
 
