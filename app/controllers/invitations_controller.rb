@@ -11,9 +11,9 @@ class InvitationsController < ApplicationController
       @users = User.all
     end
   end
-  
+
   def show
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find_by(id: current_user.id)
     @invitations = @user.invitations
   end
 
@@ -31,4 +31,5 @@ class InvitationsController < ApplicationController
   private
   def invitation_params
     params.require(:invitation).permit(:sender_id, :recipient_id)
+  end
 end
