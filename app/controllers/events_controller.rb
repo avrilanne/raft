@@ -9,7 +9,6 @@ class EventsController < ApplicationController
   end
 
   def new
-    p params
     @event = Event.new
     # @question1 = Question.new
     # @question2 = Question.new
@@ -20,9 +19,14 @@ class EventsController < ApplicationController
   def create
 
     @event = Event.new(event_params)
+    @event.host_id = current_user.id
+    @event.group_id = params[:group_id]
+    p @event
 
+    session[:group_id] = @event.group_id
     if @event.save
-      redirect_to group_events_path
+      session[:event_id] = @event.id
+      redirect_to new_poll_path
     else
       render :new, status: 422
     end
@@ -37,7 +41,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:host_id, :name, :location, :date, :time)
+    params.require(:event).permit(:host_id, :name)
   end
 
   def group_params
