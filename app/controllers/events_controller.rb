@@ -10,9 +10,6 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    # @question1 = Question.new
-    # @question2 = Question.new
-    # @Question3 =
     @group = Group.find_by(id: params[:group_id])
   end
 
