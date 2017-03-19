@@ -4,28 +4,28 @@
     <h1>Create an Account with Raft</h1>
 
     <%= form_for :user, :html => {:class => "form-horizontal"}, url: '/users' do |f| %>
-       <div class="form-group">
+    <div class="form-group">
       <%= f.label :first_name, "First Name:", class: "col-sm-2 control-label" %>
       <%= f.text_field :first_name, class: 'form-inline' %><br>
-      </div>
-         <div class="form-group">
+    </div>
+    <div class="form-group">
       <%= f.label :last_name, "Last Name:", class: "col-sm-2 control-label" %>
       <%= f.text_field :last_name, class: 'form-inline' %><br>
-      </div>
+    </div>
     <div class="form-group">
       <%= f.label :username, "Username:", class: "col-sm-2 control-label" %>
       <%= f.text_field :username, class: 'form-inline' %><br>
-      </div>
-      <div class="form-group">
+    </div>
+    <div class="form-group">
       <%= f.label :email, "Email:", class: "col-sm-2 control-label" %>
       <%= f.text_field :email, class: 'form-inline' %><br>
-      </div>
-      <div class="form-group">
+    </div>
+    <div class="form-group">
       <%= f.label :password, "Password:", class: "col-sm-2 control-label" %>
       <%= f.password_field :password, class: 'form-inline' %><br>
       <%= f.submit "Register!" %>
-      </div>
-      <% end %>
     </div>
-  </span>
+    <% end %>
+  </div>
+</span>
 </div>
