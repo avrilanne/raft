@@ -14,7 +14,7 @@ _initAutocomplete: function(){
   .autocomplete({
     source: '/users'
     appendTo: '.friend-search'
-    select: $.prooxy(this._select, this)
+    select: $.proxy(this._select, this)
   })
   .autocomplete('instance')._renderItem = $.prox(this._render, this);
 }
