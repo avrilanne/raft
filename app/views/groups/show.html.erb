@@ -1,5 +1,6 @@
 <div class="title">
-  <h1>Currently on the Raft</h1>
+  <h1> <%=@group.name%></h1>
+  <p>Currently on the Raft</p>
   <% @members.each do |member| %>
   <li><%= member.first_name %></li>
   <% end  %>
