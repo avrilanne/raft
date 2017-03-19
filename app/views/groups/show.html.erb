@@ -6,6 +6,7 @@
   <% end  %>
 
   <h1>Events!</h1>
+  <%= link_to "new event", new_group_event_path(@group) %>
   <%  @events.each do |event| %>
   <ul>
     <%= link_to event.name, group_event_path(@group, event) %>
