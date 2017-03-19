@@ -1,8 +1,12 @@
 class MembershipsController < ApplicationController
 
   def index
-    user = User.find_by(id: current_user.id)
-    @groups = user.groups
+    if logged_in?
+      user = User.find_by(id: current_user.id)
+      @groups = user.groups
+    else
+      render 'welcome/index'
+    end
   end
 
   def new
