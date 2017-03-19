@@ -1,3 +1,4 @@
+<div class="form-group">
 <%= content_tag(:label) do %>
 <br>
 <% unless current_user.answered_for?(@poll)  %>
@@ -8,3 +9,4 @@
 <br>
 <% end %>
 <%= visualize_answers_for choice %>
+</div>

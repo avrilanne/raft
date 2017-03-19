@@ -3,6 +3,7 @@ ruby "2.2.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
+gem 'figaro'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
@@ -32,6 +33,7 @@ gem 'dwolla-ruby', "~> 2.5.1"
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'rake', '~> 12.0.0'
+gem 'jquery-ui-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

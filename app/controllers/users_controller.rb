@@ -9,6 +9,11 @@ class UsersController < ApplicationController
     else
       @users = User.all
     end
+
+    respond_to do |format|
+      format.html {@users = User.search(params[:search])}
+      format.json {@users = User.search(params[:search])}
+    end
   end
 
   def create
@@ -17,6 +22,7 @@ class UsersController < ApplicationController
       set_user(@user)
       redirect_to user_path(@user)
     else
+      @errors = @user.errors.full_messages
       render 'new', status: 422
     end
   end

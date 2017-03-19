@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :groups do
     resources :events
+    resources :invitations
+
   end
   resources :sessions
 
@@ -10,10 +12,9 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index, :destroy, :update] do
     resources :memberships
-    resources :invitations
   end
 
-  get '/users' => 'users#index', as: '_users'
+  get '/groups/:id/invitations' => 'invitations#index', as: '_invitations'
 
   root 'memberships#index'
 end
