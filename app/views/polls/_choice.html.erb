@@ -1,7 +1,7 @@
 <div class="form-group">
 <%= content_tag(:label) do %>
 <br>
-<% unless current_user.answered_for?(@poll)  %>
+<% unless current_user.answered_for?(event_poll)  %>
 <%= radio_button_tag 'choice[id]', choice.id %>
 <br>
 <% end %>
