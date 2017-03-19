@@ -24,6 +24,7 @@ class PollsController < ApplicationController
       poll.save
       counter += 1
     end
+    redirect_to group_path(session[:group_id])
   end
 
   private
