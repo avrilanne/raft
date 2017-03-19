@@ -21,7 +21,7 @@ class InvitationsController < ApplicationController
     @group = Group.find_by(id: params[:group_id])
     @invitation = Invitation.new(invitation_params)
       if @invitation.save
-        InvitationMailer.invitation_email(@invitation).deliver_now
+        InvitationMailer.invitation_email(@invitation).deliver
         redirect_to group_invitation_path(@group, @invitation)
       else
         format.html { render action: 'new'}
