@@ -7,3 +7,4 @@ class Answer < ActiveRecord::Base
     errors.add(:user, 'has already answered') if user.answered_for? choice.poll
   end
 end
+

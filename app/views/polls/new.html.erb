@@ -1,19 +1,19 @@
-<p>"here lies a place to make a new poll"</p>
+<div class="form-group">
+  <%= form_for @poll do %>
 
+  <% @poll_array.each do |poll| %>
 
-<%= form_for @poll do |f| %>
+  <%= fields_for 'poll_array[]', poll do |p| %>
+    <%= p.hidden_field :question, value: 'location' %><br>
 
-<%= f.label :question %>
-<%= f.text_field :question %>
-<br>
-<p>CHOICES</p>
-<%= f.fields_for :choices do |choices_form| %>
-        <%= choices_form.label :title %>
-        <%= choices_form.text_field :title %>
-<br>
-    <% end %>
+      <p>Location</p>
+        <%= p.fields_for :choices do |choices_form| %>
+          <%= choices_form.label :option %>
+          <%= choices_form.text_field :title %><br>
+        <% end %>
+    <%= p.submit "Submit Poll!" %>
+  </div>
 
-
-<%= f.submit "Submit Poll!" %>
-<% end %>
-
+  <% end %>
+  <% end %>
+  <% end %>

@@ -4,28 +4,31 @@ class PollsController < ApplicationController
   end
 
   def new
-    @poll = Poll.new
-    3.times { @poll.choices.build}
-    p session.inspect
+    @poll_array = []
+    3.times do
+      @poll = Poll.new
+      3.times { @poll.choices.build}
+      @poll_array << @poll
+    end
   end
 
 
   def create
-    @poll = Poll.new(poll_params)
-    @poll.group_id = session[:group_id]
-    @poll.event_id = session[:event_id]
-    p '*********************'
-    p @poll
-    if @poll.save
-      redirect_to group_path(@poll.group_id)
-    else
-      render :new, status: 422
+    questions_array = ["location", "date", "time"]
+    counter = 0
+    params["poll_array"].each do |poll|
+      poll = Poll.create(poll_params(poll))
+      poll.group_id = session[:group_id]
+      poll.event_id = session[:event_id]
+      poll.question = questions_array[counter]
+      poll.save
+      counter += 1
     end
   end
 
   private
 
-  def poll_params
-    params.require(:poll).permit(:title, :question, choices_attributes: [:id, :title])
+  def poll_params(my_params)
+    my_params.permit(:question, choices_attributes: [:id, :title])
   end
 end
