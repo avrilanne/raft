@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def show
     @user = find_user
+    redirect_to user_memberships_path(@user)
   end
 
   private
