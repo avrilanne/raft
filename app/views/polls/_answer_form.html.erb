@@ -1,11 +1,21 @@
 <div class="form-group">
+<% @events_polls.each do |event_poll| %>
+<% unless current_user.answered_for?(event_poll) %>
 <%= form_tag answers_path, method: :post, id: 'answer_form' do  %>
-<% hidden_field_tag 'poll[id], @poll.id'  %>
-<%= render partial: '/polls/choice', collection: @poll.choices, as: :choice%>
-<%= @poll.answers_summary %>
+
+<% hidden_field_tag 'event_poll[id], @event_poll.id'  %>
+
+
+
+<h2><%= event_poll.question %></h2>
+
+<%= render partial: '/polls/choice', collection: event_poll.choices, as: :choice, locals: {event_poll:event_poll}%>
+<%#= event_poll.answers_summary %>
 
 <%#= if current_user.answered_for?(@poll) && !@hide_already_answered %>
 <!-- <p> You have already answered </p> -->
 <%= submit_tag 'Answer', class: 'btn btn-primary' %>
+<% end %>
+<% end %>
 <% end %>
 <div>

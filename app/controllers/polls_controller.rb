@@ -23,6 +23,8 @@ class PollsController < ApplicationController
       poll.question = questions_array[counter]
       poll.save
       counter += 1
+      p "this is a poll"
+      p poll
     end
     redirect_to group_path(session[:group_id])
   end

@@ -1,12 +1,11 @@
 <div class="container-fluid">
-<br>
-<br>
+
 <h1>
 <%= @event.name %>
 </h1>
-<br>
-<p> Vote on Location! </p>
+
 <%= render partial: 'polls/answer_form' %>
+
 </div>
-<br>
-<p> The leading answer is <%= highest_choice(@poll) %> </p>
+<b>
+<p> The leading answer is <%= highest_choice(@events_polls[0]) %> on <%= highest_choice(@events_polls[1]) %> at <%= highest_choice(@events_polls[2]) %> </p>

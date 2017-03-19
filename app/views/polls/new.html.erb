@@ -1,19 +1,24 @@
 <div class="form-group">
-  <%= form_for @poll do %>
 
+  <% questions_array = ["location", "date", "time"] %>
+  <% counter = 0 %>
+
+  <%= form_for @poll do |f|%>
   <% @poll_array.each do |poll| %>
+ <h2> <%= questions_array[counter]%> </h2>
 
   <%= fields_for 'poll_array[]', poll do |p| %>
     <%= p.hidden_field :question, value: 'location' %><br>
 
-      <p>Location</p>
         <%= p.fields_for :choices do |choices_form| %>
           <%= choices_form.label :option %>
           <%= choices_form.text_field :title %><br>
         <% end %>
-    <%= p.submit "Submit Poll!" %>
   </div>
 
   <% end %>
+  <%  counter += 1 %>
   <% end %>
+    <%= f.submit "Submit Poll!" %>
   <% end %>
+
