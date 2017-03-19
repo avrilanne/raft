@@ -2,15 +2,21 @@
 <html>
 <head>
   <title>Raft</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<a href="/">Home</a>
-<% if logged_in? %>
-<%= link_to "Logout", session_path(current_user.id), method: :delete %>
-<% end %>
+  <nav class="navbar navbar-default">
+    <a href="/">Home</a>
+    <% if logged_in? %>
+    <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+    <% else %>
+    <%= link_to "Register", new_user_path %>
+    <% end %>
+  </nav>
 
 <%= yield %>
 
