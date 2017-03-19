@@ -3,7 +3,7 @@ class MembershipsController < ApplicationController
   def index
     if logged_in?
       user = User.find_by(id: current_user.id)
-      @groups = user.groups
+      @groups = user.groups.all
     else
       render 'welcome/index'
     end
@@ -29,4 +29,5 @@ class MembershipsController < ApplicationController
       #send them to a page that says they have to pay
     end
   end
+
 end
