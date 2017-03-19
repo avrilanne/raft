@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+has_many :invitations, foreign_key: :recipient_id
+has_many :sent_invites, class_name: "Invitation", foreign_key: :sender_id
+
 has_many :memberships
 has_many :groups, through: :memberships
 has_many :events, through: :groups
@@ -10,4 +13,9 @@ has_secure_password
 
 validates :first_name, :last_name, :username, :email, presence: true
 validates :email, :username, uniqueness: true
+
+  def self.search(search)
+    where("username LIKE ?", "%#{search}%")
+  end
+
 end

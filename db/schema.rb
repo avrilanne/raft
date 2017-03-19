@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317180739) do
+ActiveRecord::Schema.define(version: 20170318212301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170317180739) do
     t.string   "location"
     t.string   "date"
     t.string   "time"
-    t.integer  "group_id"
+    t.integer  "group_id",   null: false
     t.integer  "host_id",    null: false
     t.string   "name",       null: false
     t.datetime "created_at", null: false
@@ -29,10 +29,19 @@ ActiveRecord::Schema.define(version: 20170317180739) do
 
   create_table "groups", force: :cascade do |t|
     t.integer  "admin_id",   null: false
-    t.integer  "event_id",   null: false
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.integer  "group_id"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -54,6 +63,7 @@ ActiveRecord::Schema.define(version: 20170317180739) do
   create_table "questions", force: :cascade do |t|
     t.integer  "survey_id",  null: false
     t.string   "content",    null: false
+    t.integer  "event_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,12 +72,6 @@ ActiveRecord::Schema.define(version: 20170317180739) do
     t.integer  "option_id",  null: false
     t.integer  "user_id",    null: false
     t.integer  "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "surveys", force: :cascade do |t|
-    t.integer  "event_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

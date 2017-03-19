@@ -1,0 +1,17 @@
+<h2> Login to Raft™! </h2>
+<div class='container'>
+  <span class="border-0">
+    <%= form_for :session, :html => {:class => "form-horizontal"}, url: '/sessions' do |f| %>
+      <div class="form-group">
+      <%= f.label :email, "Email:", class: "col-sm-2 control-label" %>
+      <%= f.text_field :email, class: 'form-inline' %><br>
+      </div>
+      <div class="form-group">
+      <%= f.label :password, "Password:", class: "col-sm-2 control-label" %>
+      <%= f.password_field :password, class: 'form-inline' %><br>
+      <%= f.submit "Login!" %>
+      </div>
+      <% end %>
+    </div>
+  </span>
+</div>

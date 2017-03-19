@@ -1,0 +1,16 @@
+<div class="title">
+  <h1>Currently on the Raft</h1>
+  <% @members.each do |member| %>
+  <li><%= member.first_name %></li>
+<% end  %>
+
+
+  <h1 class="title-text">Invite friends onto your Raft™</h1>
+  <%= form_tag :_users, :method => 'get' do %>
+    <p class="friend-search">
+      <label>Find Friends by username: </label>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
+</div>

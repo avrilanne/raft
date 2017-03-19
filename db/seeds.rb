@@ -14,11 +14,9 @@ Event.create(location: "", date: "", time: "", group_id: 1, host_id: 1, name: "D
 
 Membership.create(group_id: 1, user_id: 1, fee: "$5", paid: true)
 
-Group.create(admin_id: 1, event_id: 1, name: "Friend Group")
+Group.create(admin_id: 1, name: "Friend Group")
 
-Survey.create(event_id: 1)
-
-Question.create(survey_id: 1, content: "Where should we eat?")
+Question.create(event_id: 1, content: "Where should we eat?")
 
 Option.create(question_id: 1, op_content: "Nando's")
 

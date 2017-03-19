@@ -3,6 +3,14 @@ class UsersController < ApplicationController
   def new
   end
 
+  def index
+    if params[:search]
+      @users = User.search(params[:search])
+    else
+      @users = User.all
+    end
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
