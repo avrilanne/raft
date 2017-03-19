@@ -4,5 +4,6 @@ class InvitationMailer < ApplicationMailer
   @invitation = invitation
   @user = invitation.users.email
   @url
+end
 
 end
