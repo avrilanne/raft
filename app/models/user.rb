@@ -22,4 +22,7 @@ class User < ActiveRecord::Base
   def self.search(search)
     where("username LIKE ?", "%#{search}%")
   end
+
+
+
 end
