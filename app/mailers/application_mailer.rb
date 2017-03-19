@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: current_user.email
-  layout 'mailer'
+  default from: "raftproject2017@gmail.com"
+  # layout 'mailer'
 end
