@@ -1,11 +1,14 @@
 <div class="container-fluid">
 
-<h1>
-<%= @event.name %>
-</h1>
+  <h1><%= @event.name %></h1>
 
-<%= render partial: 'polls/answer_form' %>
+  <%= render partial: 'polls/answer_form' %>
 
 </div>
 <b>
 <p> The leading answer is <%= highest_choice(@events_polls[0]) %> on <%= highest_choice(@events_polls[1]) %> at <%= highest_choice(@events_polls[2]) %> </p>
+
+
+  <p>The RSVP Button should go down here:</p>
+
+
