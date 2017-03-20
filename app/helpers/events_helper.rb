@@ -27,6 +27,19 @@ module EventsHelper
     end
     return taken_bool
   end
+
+    def highest_choice(poll)
+    @num = 0
+    @highest_name = ''
+    poll.choices.each do |choice|
+      if choice.answers.count > @num
+        @num = choice.answers.count
+        @highest_name = choice.title
+      end
+    end
+    return "#{@highest_name}"
+  end
+
 end
 
 

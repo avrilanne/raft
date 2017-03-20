@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :events do
-    resources :rsvps, only: [:new, :create, :destroy]
+    resources :rsvps, only: [:new, :create, :destroy, :edit, :update]
   end
 
   resources :sessions
