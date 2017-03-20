@@ -16,19 +16,22 @@ class MembershipsController < ApplicationController
 
   def create
     p params
-    @membership = Membership.new(group_id: params[:user][:group_id], user_id: params[:user_id])
-    @recipient = User.find_by(id: params[:user_id])
-    # make a new membership
+    @membership = current_user.memberships.new(membership_params)
+    @membership.user_id = current_user.id
+    @invitation = Invitation.where("group_id = #{@membership.group_id} AND recipient_id = #{current_user.id}").first
       if @membership.save
-        if @membership.paid == true
-        #do something
+        @invitation.destroy
+        redirect_to user_path(current_user)
       else
-        #redirect somewhere
         render 'confirmation'
       end
-    else
-      #send them to a page that says they have to pay
-    end
+  end
+
+  private
+
+  def membership_params
+    params.require(:membership).permit(:group_id)
   end
 
 end
+# group_id: params[:user][:group_id], user_id: params[:user_id]

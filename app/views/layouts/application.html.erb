@@ -17,7 +17,7 @@
   <link rel="icon"
   type="image/ico"
   href="<%= asset_url 'favicon.ico' %>">
-  <body class="black" style="font-color:white;">
+  <body class="background" style="font-color:white;">
 
 
     <nav class="navbar navbar-inverse">
@@ -28,6 +28,7 @@
             <li><a href="/">Home</a></li>
             <% if logged_in? %>
             <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+            <li>POINTS:<%= current_user.points %></li>
             <% else %>
             <li><%= link_to "Register", new_user_path %></li>
             <% end %>
@@ -35,7 +36,6 @@
         </div>
       </div>
     </nav>
-
     <%= yield %>
 
   </body>

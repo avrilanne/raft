@@ -5,10 +5,20 @@ class InvitationsController < ApplicationController
 
   def index
     @group = Group.find_by(id: params[:group_id])
+    @current_members = @group.memberships.pluck(:user_id)
+    @invited_members = Invitation.where(group_id: @group.id).pluck(:recipient_id)
+
+    @not_to_invite = @current_members + @invited_members
+
     if params[:search]
       @users = User.search(params[:search])
+      @users = @users.where.not(id: @not_to_invite)
+
     else
       @users = User.all
+      # @users = @users.where('id !=?', current_user.id)
+      @users = @uses.where.not(id: @not_to_invite)
+
     end
   end
 

@@ -19,12 +19,25 @@ class RsvpsController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+    p params
+    @rsvp = Rsvp.find_by(id: params[:id])
+    @rsvp.update_attributes(present: true)
+    redirect_to :back
+  end
+
   def destroy
-    @rsvp
+    @rsvp = Rsvp.find_by(user_id: current_user.id, event_id: params[:event_id])
+    @rsvp.destroy
+    redirect_to :back
+    #¯\_(ツ)_/¯
   end
 
   # def rsvp_params
-      #¯\_(ツ)_/¯
   #   params.require(:rsvp).permit(:user_id, :event_id)
   # end
 end

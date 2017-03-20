@@ -1,18 +1,53 @@
 <div class="container">
 
 <p>Add some links back to the raft page and one back to all raft index</p>
-<div id="rsvp-drsvp">
-<button type="button", id="rsvp-btn" class="btn btn-link"><%= form_for [@event, Rsvp.new], method: :post,  remote: true do |f|  %>
-<%= f.submit "GET ON BOARD!" %>
-<% end  %></button>
-</div>
-  
+
+<p> Testing methods... </p>
+<%= user_has_voted(current_user, @event) %>
+<%= raft_has_voted(@event, @raft) %>
+<p> *************** </p>
+
+<%if !current_user.rsvp?(@event) %>
+  <div class="rsvp-drsvp">
+    <%= form_for [@event, Rsvp.new], method: :post,  remote: true, :html => {:id => "rsvp-btn"} do |f|  %>
+      <%= f.submit "GET ON BOARD!",:class => "waves-effect purple lighten-1 btn" %>
+    <% end  %>
+<% else %>
+    <%= form_for [@event, @rsvp], method: :delete,  remote: true, :html => {:id => "drsvp-btn"} do |f|  %>
+      <%= f.submit "Hop on off",:class => "waves-effect purple lighten-1 btn" %>
+    <% end  %>
+  </div>
+<% end %>
+
 <h5 class="center">
-<%= @event.name %>
+  <%= @event.name %>
 </h5>
   <div class="card-panel teal">
-<p> The leading event details are <%= highest_choice(@events_polls[0]) %> on <%= highest_choice(@events_polls[1]) %> at <%= highest_choice(@events_polls[2]) %> </p>
+    <% if @event.polls.length == 3 %>
+      <p> The leading event details are <%= highest_choice(@events_polls[0]) %> on <%= highest_choice(@events_polls[1]) %> at <%= highest_choice(@events_polls[2]) %> </p>
+    <% end %>
+  </div>
+
+<div class="card-panel orange">
+  <ul class-"attendees">
+    <p> Who's going? </p>
+    <% @event.attendees.each do |attendee| %>
+      <li>
+        <%= attendee.first_name%> <%=attendee.last_name %>
+        <% if !attendee.accounted_for(@event) %>
+          <%= form_for [@event, rsvp = Rsvp.find_by(user_id: attendee.id, event_id: @event.id)], method: :patch do |f|%>
+            <%= f.submit "Present" %>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+
+
 </div>
 <%= render partial: 'polls/answer_form' %>
 </div>
 <b>
+

@@ -1,3 +1,5 @@
 $('#rsvp-btn').remove()
-$('#rsvp-drsvp').html("<button type='button', id='delete-rsvp-btn' class='btn'>Remove RSVP</button>")
+$('#rsvp-drsvp').html('<%= form_for [@event, @rsvp], method: :delete,  remote: true, :html => {:id => "drsvp-btn"} do |f|  %>
+      <%= f.submit "Hop on off",:class => "waves-effect purple lighten-1 btn" %>
+    <% end  %>')
 

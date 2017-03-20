@@ -14,7 +14,10 @@
  *= require_self
  *=
  */
-
+.background
+{
+background-color:#96D4D3;
+}
  .navbar-nav {
   float:none;
   margin:0 auto;
@@ -30,7 +33,7 @@
 }
 
 body {
-  color: white;
+  color: black;
   font-family: "tahoma";
 }
 
