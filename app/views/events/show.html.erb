@@ -8,27 +8,46 @@
 <p> *************** </p>
 
 <%if !current_user.rsvp?(@event) %>
-  <div id="rsvp-drsvp">
-    <%= form_for [@event, Rsvp.new], method: :post,  remote: true do |f|  %>
+  <div class="rsvp-drsvp">
+    <%= form_for [@event, Rsvp.new], method: :post,  remote: true, :html => {:id => "rsvp-btn"} do |f|  %>
       <%= f.submit "GET ON BOARD!",:class => "waves-effect purple lighten-1 btn" %>
     <% end  %>
-  </div>
 <% else %>
-    <div id="rsvp-drsvp">
-    <%= form_for [@event, @rsvp], method: :delete,  remote: true do |f|  %>
+    <%= form_for [@event, @rsvp], method: :delete,  remote: true, :html => {:id => "drsvp-btn"} do |f|  %>
       <%= f.submit "Hop on off",:class => "waves-effect purple lighten-1 btn" %>
     <% end  %>
   </div>
 <% end %>
 
 <h5 class="center">
-<%= @event.name %>
+  <%= @event.name %>
 </h5>
   <div class="card-panel teal">
     <% if @event.polls.length == 3 %>
       <p> The leading event details are <%= highest_choice(@events_polls[0]) %> on <%= highest_choice(@events_polls[1]) %> at <%= highest_choice(@events_polls[2]) %> </p>
     <% end %>
   </div>
+
+<div class="card-panel orange">
+  <ul class-"attendees">
+    <p> Who's going? </p>
+    <% @event.attendees.each do |attendee| %>
+      <li>
+        <%= attendee.first_name%> <%=attendee.last_name %>
+        <%= form_for @rsvp, method: :put do |f|%>
+          <%= f.submit "Present" %>
+        <% end %>
+        <%= form_for @rsvp, method: :put do |f|%>
+          <%= f.submit "Flaked!" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+
+
+</div>
 <%= render partial: 'polls/answer_form' %>
 </div>
 <b>

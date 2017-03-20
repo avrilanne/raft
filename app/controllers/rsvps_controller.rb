@@ -19,6 +19,14 @@ class RsvpsController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+
+  end
+
   def destroy
     p params
     @rsvp = Rsvp.find_by(user_id: current_user.id, event_id: params[:event_id])
