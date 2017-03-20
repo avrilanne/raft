@@ -15,7 +15,7 @@ class Poll < ActiveRecord::Base
   end
 
   def winning_answer
-
+    # ¯\_(ツ)_/¯
   end
 
   def self.active

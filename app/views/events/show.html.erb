@@ -1,5 +1,11 @@
 <div class="container-fluid">
 
+<p>Add some links back to the raft page and one back to all raft index</p>
+<div id="rsvp-drsvp">
+<button type="button", id="rsvp-btn" class="btn btn-link"><%= form_for [@event, Rsvp.new], method: :post,  remote: true do |f|  %>
+<%= f.submit "GET ON BOARD!" %>
+<% end  %></button>
+</div>
 <h1>
 <%= @event.name %>
 </h1>
@@ -9,3 +15,7 @@
 </div>
 <b>
 <p> The leading answer is <%= highest_choice(@events_polls[0]) %> on <%= highest_choice(@events_polls[1]) %> at <%= highest_choice(@events_polls[2]) %> </p>
+
+<% if current_user.answered_for?(@events_polls)  %>
+  <p>show the button</p>
+<% end %>
