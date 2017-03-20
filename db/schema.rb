@@ -56,9 +56,11 @@ ActiveRecord::Schema.define(version: 20170319235611) do
   end
 
   create_table "invitations", force: :cascade do |t|
+    t.string   "email"
     t.integer  "sender_id"
     t.integer  "recipient_id"
     t.integer  "group_id"
+    t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
