@@ -1,5 +1,12 @@
 <div class="container">
 
+<p>Add some links back to the raft page and one back to all raft index</p>
+<div id="rsvp-drsvp">
+<button type="button", id="rsvp-btn" class="btn btn-link"><%= form_for [@event, Rsvp.new], method: :post,  remote: true do |f|  %>
+<%= f.submit "GET ON BOARD!" %>
+<% end  %></button>
+</div>
+  
 <h5 class="center">
 <%= @event.name %>
 </h5>
@@ -8,5 +15,4 @@
 </div>
 <%= render partial: 'polls/answer_form' %>
 </div>
-
 <b>

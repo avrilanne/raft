@@ -10,13 +10,27 @@ User.create(first_name: "Teb", last_name: "Demson", username: "oldtab", email: "
 
 User.create(first_name: "Avril", last_name: "Dunleavy", username: "bangarang", email:"bang@rang.edu", password_digest: "123")
 
+User.create(first_name: "Al", last_name: "Musavi", username: "ucancallmeal", email:"bigal@chaitown.com", password_digest: "123")
+
+User.create(first_name: "Nononono", last_name: "?", username: "koalalover4lyfe", email:"tatertotfreak84@hotmail.com", password_digest: "123")
+
 
 
 Membership.create(group_id: 1, user_id: 1, fee: "$5", paid: true)
+Membership.create(group_id: 1, user_id: 2, fee: "$5", paid: true)
+Membership.create(group_id: 1, user_id: 3, fee: "$5", paid: true)
+Membership.create(group_id: 1, user_id: 4, fee: "$5", paid: true)
+
+Membership.create(group_id: 2, user_id: 1, fee: "$5", paid: true)
+Membership.create(group_id: 2, user_id: 2, fee: "$5", paid: true)
+Membership.create(group_id: 2, user_id: 3, fee: "$5", paid: true)
+Membership.create(group_id: 2, user_id: 4, fee: "$5", paid: true)
+
+Membership.create(group_id: 3, user_id: 3, fee: "$5", paid: true)
+Membership.create(group_id: 3, user_id: 4, fee: "$5", paid: true)
 
 Group.create(admin_id: 1, name: "Friend Group")
-
-
-
+Group.create(admin_id: 2, name: "Float Crew")
+Group.create(admin_id: 3, name: "The Dudes")
 
 
