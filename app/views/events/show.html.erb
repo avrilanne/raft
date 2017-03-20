@@ -1,18 +1,27 @@
 <div class="container">
 
 <p>Add some links back to the raft page and one back to all raft index</p>
+
+<p> Testing methods... </p>
+<%= user_has_voted(current_user, @event) %>
+<%= raft_has_voted(@event, @raft) %>
+<p> *************** </p>
+
 <div id="rsvp-drsvp">
 <button type="button", id="rsvp-btn" class="btn btn-link"><%= form_for [@event, Rsvp.new], method: :post,  remote: true do |f|  %>
 <%= f.submit "GET ON BOARD!" %>
 <% end  %></button>
 </div>
-  
+
 <h5 class="center">
 <%= @event.name %>
 </h5>
   <div class="card-panel teal">
-<p> The leading event details are <%= highest_choice(@events_polls[0]) %> on <%= highest_choice(@events_polls[1]) %> at <%= highest_choice(@events_polls[2]) %> </p>
-</div>
+    <% if @event.polls.length == 3 %>
+      <p> The leading event details are <%= highest_choice(@events_polls[0]) %> on <%= highest_choice(@events_polls[1]) %> at <%= highest_choice(@events_polls[2]) %> </p>
+    <% end %>
+  </div>
 <%= render partial: 'polls/answer_form' %>
 </div>
 <b>
+

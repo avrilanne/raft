@@ -18,7 +18,6 @@ class MembershipsController < ApplicationController
     p params
     @membership = Membership.new(group_id: params[:user][:group_id], user_id: params[:user_id])
     @recipient = User.find_by(id: params[:user_id])
-    # make a new membership
       if @membership.save
         if @membership.paid == true
         #do something

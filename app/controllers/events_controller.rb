@@ -8,6 +8,7 @@ class EventsController < ApplicationController
     @event = Event.find_by(id: params[:id])
     @poll = Poll.find_by(event_id: @event.id)
     @events_polls = @event.polls
+    @raft = Group.find_by(id: params[:group_id])
   end
 
   def new
