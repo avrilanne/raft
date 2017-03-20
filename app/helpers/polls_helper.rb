@@ -21,3 +21,6 @@ module PollsHelper
     return "#{@highest_name}"
   end
 end
+
+
+

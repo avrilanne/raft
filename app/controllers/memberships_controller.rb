@@ -19,10 +19,6 @@ class MembershipsController < ApplicationController
     @membership = current_user.memberships.new(membership_params)
     @membership.user_id = current_user.id
     @invitation = Invitation.where("group_id = #{@membership.group_id} AND recipient_id = #{current_user.id}").first
-    p "*********************"
-    p @invitation
-    p "*************************"
-    # @recipient = User.find_by(id: params[:user_id])
       if @membership.save
         @invitation.destroy
         redirect_to user_path(current_user)
