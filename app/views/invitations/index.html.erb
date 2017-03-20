@@ -1,13 +1,18 @@
-<h2>Friends Search</h2>
+<div class="container center">
+<h5>Friends Search</h5>
+
 <ul>
   <% @users.each do |user| %>
-      <li><a href="/users/<%= user.id %>"><%= user.username %></a>
+      <li>
+        <p> <%= user.username %> </p>
         <%= form_for Invitation.new, url: "/groups/#{@group.id}/invitations", method: "post" do |f| %>
         <%= f.hidden_field :sender_id, :value => current_user.id %>
          <%= f.hidden_field :recipient_id, :value => user.id %>
-        <%= f.submit "Send Invite" %>
+        <%= f.submit "Send Invite",:class => "waves-effect purple lighten-1 btn" %>
       </li>
       <% end  %>
   <% end %>
 </ul>
+
+</div>
 

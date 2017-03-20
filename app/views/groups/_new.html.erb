@@ -1,10 +1,10 @@
 
-<h2> Create a new Raft™ </h2>
+<h5> Create a new Raft™ </h5>
 
 <%= form_for :group, url: groups_path do |f|  %>
 <%= render partial: '/users/errors' %>
 <%= f.label :name  %>
 <%= f.text_field :name %>
-<%= f.submit  %>
+<%= f.submit 'New Raft', :class => "waves-effect purple lighten-1 btn"  %>
 <% end  %>
 

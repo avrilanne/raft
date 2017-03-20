@@ -4,6 +4,7 @@ class MembershipsController < ApplicationController
     if logged_in?
       user = User.find_by(id: current_user.id)
       @groups = user.groups.all
+      redirect_to user_path(user)
     else
       render 'welcome/index'
     end

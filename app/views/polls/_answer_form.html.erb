@@ -1,21 +1,22 @@
-<div class="form-group">
+<div class="container">
 <% @events_polls.each do |event_poll| %>
+<br>
 <% unless current_user.answered_for?(event_poll) %>
 <%= form_tag answers_path, method: :post, id: 'answer_form' do  %>
 
 <% hidden_field_tag 'event_poll[id], @event_poll.id'  %>
-
-
-
-<h2><%= event_poll.question %></h2>
+  <div class="card-panel teal">
+<h6 class="center"><%= event_poll.question %></h6>
 
 <%= render partial: '/polls/choice', collection: event_poll.choices, as: :choice, locals: {event_poll:event_poll}%>
 <%#= event_poll.answers_summary %>
 
 <%#= if current_user.answered_for?(@poll) && !@hide_already_answered %>
 <!-- <p> You have already answered </p> -->
-<%= submit_tag 'Answer', class: 'btn btn-primary' %>
+<%= submit_tag 'Answer', :class => "waves-effect purple lighten-1 btn" %>
+<br>
 <% end %>
 <% end %>
+</div>
 <% end %>
-<div>
+</div>

@@ -1,5 +1,5 @@
-<h2> Login to Raft™! </h2>
 <div class='container'>
+<h5 class="center"> Login to Raft™! </h5>
   <span class="border-0">
     <% if @errors %>
   <span>Something went wrong:</span>
@@ -17,7 +17,7 @@
       <div class="form-group">
       <%= f.label :password, "Password:", class: "col-sm-2 control-label" %>
       <%= f.password_field :password, class: 'form-inline' %><br>
-      <%= f.submit "Login!" %>
+      <%= f.submit "Login!", class: "waves-effect purple lighten-1 btn" %>
       </div>
       <% end %>
     </div>
