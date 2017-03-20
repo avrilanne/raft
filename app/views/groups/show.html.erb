@@ -7,6 +7,14 @@
   <% @members.each do |member| %>
   <i><p class="center"><%= member.first_name %></p></i>
   <% end  %>
+
+  <% if @invitation.length > 0 %>
+    <%= form_for :membership, url: user_memberships_path(current_user.id) do |f| %>
+      <%= f.hidden_field(:group_id, value: @group.id) %>
+      <%= f.submit "Join In!", :class => "waves-effect purple lighten-1 btn" %>
+    <% end %>
+  <% end %>
+
 </div>
 
 <div class="card-panel teal">
