@@ -34,11 +34,10 @@
     <% @event.attendees.each do |attendee| %>
       <li>
         <%= attendee.first_name%> <%=attendee.last_name %>
-        <%= form_for @rsvp, method: :put do |f|%>
-          <%= f.submit "Present" %>
-        <% end %>
-        <%= form_for @rsvp, method: :put do |f|%>
-          <%= f.submit "Flaked!" %>
+        <% if !attendee.accounted_for(@event) %>
+          <%= form_for [@event, rsvp = Rsvp.find_by(user_id: attendee.id, event_id: @event.id)], method: :patch do |f|%>
+            <%= f.submit "Present" %>
+          <% end %>
         <% end %>
       </li>
     <% end %>

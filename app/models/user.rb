@@ -36,4 +36,15 @@ class User < ActiveRecord::Base
     return attending
   end
 
+  def accounted_for(event)
+    @accounted = false
+    self.rsvps.each do |r|
+      if r.event_id == event.id
+        if r.present == true
+          @accounted = true
+        end
+      end
+    end
+    return @accounted
+  end
 end

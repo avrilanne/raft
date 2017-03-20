@@ -24,14 +24,14 @@ class RsvpsController < ApplicationController
   end
 
   def update
-
+    p params
+    @rsvp = Rsvp.find_by(id: params[:id])
+    @rsvp.update_attributes(present: true)
+    redirect_to :back
   end
 
   def destroy
-    p params
     @rsvp = Rsvp.find_by(user_id: current_user.id, event_id: params[:event_id])
-    p "*************************************************************************"
-    p @rsvp
     @rsvp.destroy
     redirect_to :back
     #¯\_(ツ)_/¯
