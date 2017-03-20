@@ -1,0 +1,37 @@
+# Be sure to restart your server when you modify this file.
+#
+# Points are a simple integer value which are given to "meritable" resources
+# according to rules in +app/models/merit/point_rules.rb+. They are given on
+# actions-triggered, either to the action user or to the method (or array of
+# methods) defined in the +:to+ option.
+#
+# 'score' method may accept a block which evaluates to boolean
+# (recieves the object as parameter)
+
+module Merit
+  class PointRules
+    include Merit::PointRulesMethods
+
+    def initialize
+
+      # score 10, to: :user, :on => 'users#create'
+      score 15, on: 'users#create'
+      score 50, on: 'events#create'
+      score 70, on: 'groups#create'
+      score 25, on: 'invites#create'
+      score 30, on: 'memberships#create'
+      score 20, on: 'rsvps#create'
+      score -20, on: 'rsvps#destroy'
+
+      #
+      # score 15, :on => 'reviews#create', :to => [:reviewer, :reviewed]
+      #
+      # score 20, :on => [
+      #   'comments#create',
+      #   'photos#create'
+      # ]
+      #
+      # score -10, :on => 'comments#destroy'
+    end
+  end
+end
