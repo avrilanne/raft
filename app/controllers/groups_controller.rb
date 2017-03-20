@@ -22,6 +22,8 @@ class GroupsController < ApplicationController
     @group = Group.find_by(id: params[:id])
     @members = @group.members
     @events = @group.events
+    @invitation = Invitation.where("group_id = #{@group.id} AND recipient_id = #{current_user.id}")
+
     # respond_to do |format|
     #   format.html {redirect_to group_path(@group)}
     #   format.js {}

@@ -22,7 +22,9 @@
   <ul>
     <% current_user.invitations.each do |invitation| %>
 
-      <li>  <%= link_to Group.find_by(id: invitation.group_id).name, group_path(Group.find_by(id: invitation.group_id))  %></li>
+      <li>
+        <%=link_to Group.find_by(id: invitation.group_id).name, group_path(invitation.group_id)  %>
+      </li>
 
     <% end  %>
   </ul>
