@@ -16,11 +16,12 @@ module Merit
 
       # score 10, to: :user, :on => 'users#create'
       score 15, on: 'users#create'
-      score 50, on: 'events#create'
+      score -50, on: 'events#create'
       score 70, on: 'groups#create'
       score 25, on: 'invites#create'
       score 30, on: 'memberships#create'
       score 20, on: 'rsvps#create'
+      score 20, on: 'answers#create'
       score -20, on: 'rsvps#destroy'
 
       #

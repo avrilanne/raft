@@ -20,11 +20,16 @@ class RsvpsController < ApplicationController
   end
 
   def destroy
-    @rsvp
+    p params
+    @rsvp = Rsvp.find_by(user_id: current_user.id, event_id: params[:event_id])
+    p "*************************************************************************"
+    p @rsvp
+    @rsvp.destroy
+    redirect_to :back
+    #¯\_(ツ)_/¯
   end
 
   # def rsvp_params
-      #¯\_(ツ)_/¯
   #   params.require(:rsvp).permit(:user_id, :event_id)
   # end
 end

@@ -7,11 +7,19 @@
 <%= raft_has_voted(@event, @raft) %>
 <p> *************** </p>
 
-<div id="rsvp-drsvp">
-<button type="button", id="rsvp-btn" class="btn btn-link"><%= form_for [@event, Rsvp.new], method: :post,  remote: true do |f|  %>
-<%= f.submit "GET ON BOARD!" %>
-<% end  %></button>
-</div>
+<%if !current_user.rsvp?(@event) %>
+  <div id="rsvp-drsvp">
+    <%= form_for [@event, Rsvp.new], method: :post,  remote: true do |f|  %>
+      <%= f.submit "GET ON BOARD!",:class => "waves-effect purple lighten-1 btn" %>
+    <% end  %>
+  </div>
+<% else %>
+    <div id="rsvp-drsvp">
+    <%= form_for [@event, @rsvp], method: :delete,  remote: true do |f|  %>
+      <%= f.submit "Hop on off",:class => "waves-effect purple lighten-1 btn" %>
+    <% end  %>
+  </div>
+<% end %>
 
 <h5 class="center">
 <%= @event.name %>

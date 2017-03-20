@@ -26,6 +26,14 @@ class User < ActiveRecord::Base
     where("username LIKE ?", "%#{search}%")
   end
 
-
+  def rsvp?(event)
+    attending = false
+    self.upcoming_events.each do |e|
+      if e.id == event.id
+        attending = true
+      end
+    end
+    return attending
+  end
 
 end
