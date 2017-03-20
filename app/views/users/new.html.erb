@@ -1,7 +1,7 @@
-<h2> Welcome user! </h2>
+
+    <h6 class="center">Create an Account with Raft</h6>
 <div class='container'>
   <span class="border-0">
-    <h1>Create an Account with Raft</h1>
 
     <%= form_for :user, :html => {:class => "form-horizontal"}, url: '/users' do |f| %>
     <div class="form-group">
@@ -23,7 +23,7 @@
     <div class="form-group">
       <%= f.label :password, "Password:", class: "col-sm-2 control-label" %>
       <%= f.password_field :password, class: 'form-inline' %><br>
-      <%= f.submit "Register!" %>
+      <%= f.submit "Register!", class: "waves-effect purple lighten-1 btn" %>
     </div>
     <% end %>
   </div>

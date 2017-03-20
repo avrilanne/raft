@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
 
 <p>Add some links back to the raft page and one back to all raft index</p>
 <div id="rsvp-drsvp">
@@ -6,16 +6,13 @@
 <%= f.submit "GET ON BOARD!" %>
 <% end  %></button>
 </div>
-<h1>
+  
+<h5 class="center">
 <%= @event.name %>
-</h1>
-
+</h5>
+  <div class="card-panel teal">
+<p> The leading event details are <%= highest_choice(@events_polls[0]) %> on <%= highest_choice(@events_polls[1]) %> at <%= highest_choice(@events_polls[2]) %> </p>
+</div>
 <%= render partial: 'polls/answer_form' %>
-
 </div>
 <b>
-<p> The leading answer is <%= highest_choice(@events_polls[0]) %> on <%= highest_choice(@events_polls[1]) %> at <%= highest_choice(@events_polls[2]) %> </p>
-
-<% if current_user.answered_for?(@events_polls)  %>
-  <p>show the button</p>
-<% end %>

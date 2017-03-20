@@ -1,25 +1,35 @@
-  <h2> <%= @user.first_name %> </h2>
-
-<h1>Rafts youre a ridin'</h1>
-<ul>
-<% @groups.each do |group| %>
-<p><%= link_to group.name, group_path(group), :class =>"btn btn-link" %></p>
-
-<% end  %>
-<div class="container">
-</ul>
-
-  <p><%= current_user.first_name.capitalize %>, Check Out Your Invites!</p>
-
+<div class="container center">
+  <h5 class="center"> Hey <%= @user.first_name %>! </h5>
+<% if @groups.length > 0 %>
+<div class="card-panel teal">
+  <h5>Rafts you're a ridin'</h5>
   <ul>
-    <% current_user.memberships.each do |membership| %>
-    <% if membership.paid == nil %>
-    <li><%= Group.find_by(id: membership.group_id).name  %></li>
-    <% end %>
-  </ul>
+  <% @groups.each do |group| %>
+    <p><%= link_to group.name, group_path(group), :class =>"waves-effect purple lighten-1 btn" %></p>
   <% end  %>
-
-<%= render partial: '/groups/new' %>
-
+<% else %>
+  <h6 class="center">You have no Rafts yet...Come on!!!</h6>
+<% end %>
 </div>
 
+<div class="card-panel teal">
+</ul>
+<% if current_user.invitations.length > 0 %>
+  <p>Check Out Your Invites!</p>
+
+  <ul>
+    <% current_user.invitations.each do |invitation| %>
+      <li><%= Group.find_by(id: invitation.group_id).name  %></li>
+    <% end  %>
+  </ul>
+<% else %>
+    <h5>You have no invites...shucks</h5>
+
+<% end %>
+</div>
+
+ <div class="card-panel teal">
+  <%= render partial: '/groups/new' %>
+
+</div>
+</div>
