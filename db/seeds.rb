@@ -33,7 +33,4 @@ Group.create(admin_id: 1, name: "Friend Group")
 Group.create(admin_id: 2, name: "Float Crew")
 Group.create(admin_id: 3, name: "The Dudes")
 
-Event.create(location: "Nando's", date: "Thursday", time: "8pm", group_id: 1, host_id: 4, name: "A cheeky nandos")
-
-
 

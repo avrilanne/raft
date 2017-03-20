@@ -1,0 +1,4 @@
+
+<button type="button", id="delete-rsvp-btn" class="btn btn-link"><%= form_for event_rsvp_path(@event, @rsvp), method: :delete,  remote: true do |f|  %>
+<%= f.submit "GET OFF BOARD!" %>
+<% end  %></button>
