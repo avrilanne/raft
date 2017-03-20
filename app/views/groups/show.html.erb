@@ -3,18 +3,6 @@
   <h5 class="center"> <%=@group.name%></h5>
 
 
-
-<% current_user.invitations.each do |invitation| %>
-  <% if invitation.group_id == @group.id %>
-    <p>heres a button, which will be a new memberhsip</p>
-     <%= form_for [current_user, Membership.new], method: :post do |f| %>
-      <%= f.submit "Climb in the raft" %>
-     <% end %>
-  <% end %>
-<% end  %>
-
-
-
 <div class="card-panel teal">
   <p class="center">Currently on the Raft™</p>
   <% @members.each do |member| %>

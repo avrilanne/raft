@@ -1,20 +1,19 @@
 <div class="container center">
   <h5 class="center"> Hey <%= @user.first_name %>! </h5>
+<p>POINTS: <%= current_user.points %></p>
 <% if @groups.length > 0 %>
-
-<div class="card-panel teal center">
+<div class="card-panel orange darken-4 center">
   <h5>Rafts you're a ridin'</h5>
   <ul>
   <% @groups.each do |group| %>
-    <p><%= link_to group.name, group_path(group), :class =>"waves-effect purple lighten-1 btn" %></p>
+    <p><%= link_to group.name, group_path(group), :class =>"waves-effect blue darken-4 btn" %></p>
   <% end  %>
 <% else %>
   <h6 class="center">You have no Rafts yet...Come on!!!</h6>
 <% end %>
 </div>
-
-
-<div class="card-panel teal center">
+            <i class="fa fa-life-ring" aria-hidden="true"></i>
+<div class="card-panel orange darken-4 center">
 </ul>
 <% if current_user.invitations.length > 0 %>
   <p>Check Out Your Invites!</p>
@@ -32,10 +31,9 @@
     <h5>You have no invites...shucks</h5>
 <% end %>
 </div>
+            <i class="fa fa-life-ring" aria-hidden="true"></i>
 
-
-
- <div class="card-panel teal left">
+ <div class="card-panel orange darken-4 left">
   <%= render partial: '/groups/new' %>
 </div>
 
