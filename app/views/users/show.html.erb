@@ -3,9 +3,9 @@
 <br>
 </img>
 
-<%= form_for @user, url: edit_user_path, html: { multipart: true } do |form| %>
+<%= form_for @user, :url => { :action => "update" } do |form| %>
   <%= form.file_field :avatar %>
-  <%= form.submit 'upload' %>
+  <%= form.submit %>
 <% end %>
 
 

@@ -27,8 +27,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
 
   def show
     @user = find_user
@@ -36,9 +34,14 @@ class UsersController < ApplicationController
     # redirect_to user_memberships_path(@user)
   end
 
+  def edit
+    @user = find_user
+  end
 
   def update
     @user = find_user
+    @user.update_attributes(user_params)
+    redirect_to :back
   end
 
   private
