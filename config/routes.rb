@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :events
     resources :invitations
     resources :comments
+    resources :images
   end
 
   resources :events do
@@ -12,11 +13,13 @@ Rails.application.routes.draw do
 
   resources :sessions
 
+
+
   resources :polls
 
   resources :answers, only: [:create]
 
-  resources :users, except: [:index, :destroy, :update] do
+  resources :users, except: [:index, :destroy] do
     resources :memberships
   end
 

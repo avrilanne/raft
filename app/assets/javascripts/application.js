@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
 // $(document).ready(function(){
 // new google.maps.places.Autocomplete(
 //   (document.getElementById('autocomplete')), {
@@ -86,5 +87,6 @@
 //       });
       }
   // google.maps.event.addDomListener(window, 'load', initAutocomplete);
+
 
 

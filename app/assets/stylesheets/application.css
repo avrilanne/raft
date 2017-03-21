@@ -45,6 +45,7 @@ html {
   padding: 10px;
 }
 
+
 .button {
   font: bold 11px Arial;
   text-decoration: none;
@@ -56,6 +57,7 @@ html {
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
 }
+
 #map {
         height: 100%;
         overflow: visible;
@@ -136,5 +138,6 @@ html {
       #target {
         width: 345px;
       }
+
 
 

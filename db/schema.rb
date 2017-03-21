@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20170321163325) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,6 +76,16 @@ ActiveRecord::Schema.define(version: 20170321163325) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.integer  "group_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "group_image_file_name"
+    t.string   "group_image_content_type"
+    t.integer  "group_image_file_size"
+    t.datetime "group_image_updated_at"
+  end
+
   create_table "invitations", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
@@ -130,6 +141,7 @@ ActiveRecord::Schema.define(version: 20170321163325) do
 
   create_table "points", force: :cascade do |t|
     t.integer  "user_id",    null: false
+    t.integer  "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -156,15 +168,19 @@ ActiveRecord::Schema.define(version: 20170321163325) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",                  null: false
-    t.string   "last_name",                   null: false
-    t.string   "username",                    null: false
-    t.string   "email",                       null: false
-    t.string   "password_digest",             null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string   "first_name",                      null: false
+    t.string   "last_name",                       null: false
+    t.string   "username",                        null: false
+    t.string   "email",                           null: false
+    t.string   "password_digest",                 null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "sash_id"
-    t.integer  "level",           default: 0
+    t.integer  "level",               default: 0
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_foreign_key "answers", "choices"
