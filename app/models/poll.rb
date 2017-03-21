@@ -2,6 +2,7 @@ class Poll < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :choices, dependent: :destroy
   has_many :answers, through: :choices
+  has_many :locations
   validates_presence_of :question, :choices
 
   accepts_nested_attributes_for :choices, :reject_if => :all_blank, :allow_destroy => true

@@ -30,7 +30,7 @@ gem 'dwolla-ruby', "~> 2.5.1"
 gem 'dotenv-rails'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'pry'
 gem 'rake', '~> 12.0.0'
 gem 'jquery-ui-rails'
 # Use Unicorn as the app server
