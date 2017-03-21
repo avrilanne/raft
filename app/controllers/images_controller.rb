@@ -6,19 +6,23 @@ class ImagesController < ApplicationController
 
 
   def create
+    p "PARAMSSS"
+    p params
     @image = Image.new(image_params)
-    @image.group_id = params[:id]
+    @image.group_id = params[:group_id]
     @image.save
+    p"hello"
+    p @image
     redirect_to :back
   end
 
 
   def show
-    @image = Image.find_by(group_id:params[:id])
+    @image = Image.find_by(group_id:params[:group_id])
   end
 
   private
   def image_params
-    params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :avatar)
+    params.require(:image).permit(:group_image)
   end
 end

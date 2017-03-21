@@ -63,15 +63,15 @@
 </img> -->
 
 <h4> Upload photos of the Raft!</h4>
-<%= form_for [:groups, :image], group_images_path(@group) do |form| %>
-  <%= form.file_field :image %>
+<%= form_for @image, url: group_images_path(@group) do |form| %>
+  <%= form.file_field :group_image %>
   <%= form.submit %>
 <% end %>
 
 
 
 <img class="prof">
-<% @group.images.each do |image| %>
+<% @group.images.all.each do |image| %>
 <%= image_tag image.group_image.url(:thumb), :class=>"circle" %>
 <br>
 </img>
@@ -86,7 +86,6 @@
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
   </ol>
-
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
@@ -100,7 +99,6 @@
     <div class="item">
       <img src="../assets/images/3.jpg" alt="Flower">
     </div>
-
   </div>
 
   <!-- Left and right controls -->
