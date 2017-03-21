@@ -1,7 +1,18 @@
-
-    <h6 class="center">Create an Account with Raft</h6>
-<div class='container'>
+<h6 class="center"><i>Create an Account with Raft</i></h6>
+<br>
+<div class="container center">
   <span class="border-0">
+
+  <div class="alert-danger">
+    <% if @errors %>
+    <span>Something went wrong:</span>
+    <ul class="error-list pad-b-2">
+      <% @errors.each do |error| %>
+      <li class="error-item"><%= error %></li>
+      <% end %>
+    </ul>
+    <% end %>
+</div>
 
     <%= form_for :user, :html => {:class => "form-horizontal"}, url: '/users' do |f| %>
     <div class="form-group">

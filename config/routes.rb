@@ -20,8 +20,7 @@ Rails.application.routes.draw do
     resources :rsvps, only: [:new, :create, :destroy, :edit, :update]
   end
 
-  resources :sessions
-
+  resources :sessions, except: [:index]
 
 
   resources :polls
