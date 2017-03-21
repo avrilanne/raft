@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   def show
     @user = find_user
     @groups = @user.groups
@@ -34,10 +35,13 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = find_user
   end
 
   def update
     @user = find_user
+    @user.update_attributes(user_params)
+    redirect_to :back
   end
 
   private
