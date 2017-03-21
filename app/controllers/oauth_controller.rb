@@ -19,4 +19,18 @@ class OauthController < ApplicationController
 
     session[:token] = Dwolla::OAuth.get_token(verify_code, return_url)
   end
+
+  def authenticate
+    redirect_to auth.url
+  end
+
+  def callback
+    account_token = auth.callback(params)
+  end
+
+  private
+
+  def auth
+    $dwolla.auths.new redirect_uri: "https://www.raft2k17.herokuapp.com", scope: "send|funding", state: session[:state] ||= SecureRandom.hex
+  end
 end
