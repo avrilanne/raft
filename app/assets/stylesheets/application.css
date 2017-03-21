@@ -26,6 +26,15 @@ background-color:#96D4D3;
   color:white;
 }
 
+#carouselExampleSlidesOnly{
+ height: 170px;
+  width: 300px;
+}
+.group-carousel{
+  height: 170px;
+  width: 300px;
+
+}
 .navbar-nav > li {
   display: inline-block;
   float:none;

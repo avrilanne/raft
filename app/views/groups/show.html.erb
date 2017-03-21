@@ -3,6 +3,29 @@
   <h5 class="center"> <%=@group.name%></h5>
 
 
+<% if @group.images.length > 0 %>
+<h4> Photos from our last event!</h4>
+
+<div class="group-carousel center">
+<div id="carouselExampleSlidesOnly" class="carousel slide container" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    <% @group.images.all.each do |image| %>
+    <div class="item <%= 'active' if image == @group.images.all[0] %>">
+      <%= image_tag image.group_image.url(:medium) %>
+    </div>
+    <% end %>
+  </div>
+</div>
+<% end %>
+</div>
+
+<h4> Upload photos of the Raft!</h4>
+<%= form_for @image, url: group_images_path(@group) do |form| %>
+  <%= form.file_field :group_image %>
+  <%= form.submit %>
+<% end %>
+
+
 <div class="card-panel teal">
   <p class="center">Currently on the Raft™</p>
   <% @members.each do |member| %>
@@ -54,25 +77,6 @@
 
 </div>
 
-</div>
-
-<h4> Upload photos of the Raft!</h4>
-<%= form_for @image, url: group_images_path(@group) do |form| %>
-  <%= form.file_field :group_image %>
-  <%= form.submit %>
-<% end %>
-
-
-<h4> Photos from our last event!</h4>
-
-<div id="carouselExampleSlidesOnly" class="carousel slide container" data-ride="carousel">
-  <div class="carousel-inner" role="listbox">
-    <% @group.images.all.each do |image| %>
-    <div class="item <%= 'active' if image == @group.images.all[0] %>">
-      <%= image_tag image.group_image.url(:medium) %>
-    </div>
-    <% end %>
-  </div>
 </div>
 
 
