@@ -4,6 +4,6 @@ class Event < ActiveRecord::Base
   has_many :polls
   has_many :rsvps
   has_many :attendees, through: :rsvps
-
+  has_many :comments, as: :commentable
   validates :host_id, :name, presence: true
 end

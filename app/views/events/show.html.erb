@@ -6,6 +6,7 @@
 <%= user_has_voted(current_user, @event) %>
 <%= raft_has_voted(@event, @raft) %>
 <p> *************** </p>
+<% if user_has_voted(current_user, @event)%>
 
 <%if !current_user.rsvp?(@event) %>
   <div class="rsvp-drsvp">
@@ -45,6 +46,17 @@
 </div>
 
 
+<div class= "comments card-panel lime">
+
+<%= render partial: '/comments/new_event', locals: { commentable: @event } %>
+
+<% @event.comments.each do |comment| %>
+<p> <%= comment.body %> </p>
+<em><%= comment.author.username %></em>
+<% end %>
+
+</div>
+<% end %>
 
 </div>
 <%= render partial: 'polls/answer_form' %>
