@@ -47,7 +47,7 @@
 
 <%= render partial: '/comments/new_group', locals: { commentable: @group } %>
 
-<% @group.comments.each do |comment| %>
+<% @group.comments.limit(3).each do |comment| %>
 <p> <%= comment.body %> </p>
 <em><%= comment.author.username %></em>
 <% end %>

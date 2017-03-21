@@ -50,7 +50,7 @@
 
 <%= render partial: '/comments/new_event', locals: { commentable: @event } %>
 
-<% @event.comments.each do |comment| %>
+<% @event.comments.limit(3).each do |comment| %>
 <p> <%= comment.body %> </p>
 <em><%= comment.author.username %></em>
 <% end %>

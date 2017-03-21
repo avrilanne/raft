@@ -39,3 +39,35 @@
 
 </div>
 </div>
+
+ <div class="card-panel red">
+<p> UPCOMING EVENTS </p>
+    <% current_user.upcoming_events.each do |event| %>
+    <%= link_to event.name, group_event_path(current_user, event), :style => "color: white; text-decoration: underline;" %>
+    <% end %>
+</div>
+
+
+<!-- avrils just playing -->
+<div class="recent-activity card-panel blue">
+<p>
+Recent Activity:
+</p>
+<%= current_user.groups.find(1).name %>
+<% current_user.groups.find(1).comments.limit(3).each do |comment| %>
+
+<p> <%= comment.body %> </p>
+<em><%= comment.author.username %></em>
+<% end %>
+
+<!-- avril -->
+
+
+
+
+
+
+
+
+
+
