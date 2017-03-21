@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :events
     resources :invitations
     resources :comments
+    resources :images
   end
 
   resources :events do
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :sessions
+
+
 
   resources :polls
 
