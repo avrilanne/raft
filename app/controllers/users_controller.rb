@@ -27,14 +27,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def show
     @user = find_user
     @groups = @user.groups
     # redirect_to user_memberships_path(@user)
   end
 
-  def edit
-  end
 
   def update
     @user = find_user
