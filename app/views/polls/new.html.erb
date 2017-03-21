@@ -61,12 +61,32 @@
 
         // When the user selects an address from the dropdown, populate the address
         // fields in the form.
-        autocomplete.addListener('place_changed', fillForm);
-      }
-        function fillForm(){
-          var place = autocomplete.getPlace();
-          document.getElementById("title_field").value = place.name + "," +place.formatted_address;
 
+        // autocomplete.addListener('place_changed', fillForm);
+        $(".location_button").on("click", function(event){
+          event.preventDefault()
+          var i = 0
+
+          console.log("****************")
+          console.log($("#fieldarray0").val())
+          console.log("****************")
+
+          if ($("#fieldarray0").val() != "" && $("#fieldarray1").val() === null){
+            i = 1
+          }
+          if ($("#fieldarray0").val() != null && $("#fieldarray1").val().length != null){
+            i = 2
+          }
+
+          var place = autocomplete.getPlace();
+          console.log("****************")
+          console.log($("#fieldarray0").val())
+          console.log("****************")
+          var num = i
+          var n = num.toString();
+$("#fieldarray" + i).val(place.name + "," + place.formatted_address)
+})
+          // document.getElementById("fieldarray" + n).value = place.name + "," +place.formatted_address;
         }
       // function fillInAddress() {
       //   // Get the place details from the autocomplete object.
@@ -135,21 +155,25 @@
     </div>
     <br>
     <br>
+    <button class="location_button">Add Location</button>
     <br>
       <%= fields_for 'poll_array[]', poll do |p| %>
-     <!-- p.hidden_field :question, value: 'location' %><br> -->
+     <%= p.hidden_field :question, value: 'location' %><br>
 
-            <%= p.fields_for :choices do |choices_form| %>
+        <% j = 0 %>
+        <%= p.fields_for :choices do |choices_form| %>
+        <% field_array = ["fieldarray0","fieldarray1","fieldarray2"] %>
               <%= choices_form.label :option %>
-              <%= choices_form.text_field :title, id: "title_field"%><br>
-            <% end %>
-      <% end %>
+              <%= choices_form.text_field :title, id: field_array[j]%><br>
+              <% j += 1 %>
+             <% end %>
+    <% end %>
 <br><br><br>
 
     <% else %>
 
       <%= fields_for 'poll_array[]', poll do |p| %>
-     <!-- p.hidden_field :question, value: 'location' %><br> -->
+     <%=p.hidden_field :question, value: 'location' %><br>
 
             <%= p.fields_for :choices do |choices_form| %>
               <%= choices_form.label :option %>
