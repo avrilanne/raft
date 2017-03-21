@@ -19,6 +19,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @group = Group.find_by(id: params[:id])
     @members = @group.members
     @events = @group.events

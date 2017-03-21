@@ -1,3 +1,15 @@
+<img class="prof">
+<%= image_tag @user.avatar.url(:thumb) %>
+<br>
+</img>
+
+<%= form_for @user, url: edit_user_path(@user), html: { multipart: true } do |form| %>
+  <%= form.file_field :avatar %>
+  <%= form.submit 'upload' %>
+<% end %>
+
+
+
 <div class="container center">
   <h5 class="center"> Hey <%= @user.first_name %>! </h5>
 <p>POINTS: <%= current_user.points %></p>
@@ -39,3 +51,35 @@
 
 </div>
 </div>
+
+ <div class="card-panel red left">
+<p> UPCOMING EVENTS </p>
+    <% current_user.upcoming_events.each do |event| %>
+    <%= link_to event.name, group_event_path(current_user, event), :style => "color: white; text-decoration: underline;" %>
+    <% end %>
+</div>
+
+
+<!-- avrils just playing -->
+<!-- <div class="recent-activity card-panel blue">
+<p>
+Recent Activity:
+</p>
+<%#= current_user.groups.find(1).name %>
+<#%# current_user.groups.find(1).comments.limit(3).each do |comment| %>
+
+<p> <#%#= comment.body %> </p>
+<em><#%#= comment.author.username %></em>
+<#% end %> -->
+
+<!-- avril -->
+
+
+
+
+
+
+
+
+
+
