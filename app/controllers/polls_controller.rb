@@ -16,6 +16,9 @@ class PollsController < ApplicationController
   def create
     questions_array = ["location", "date", "time"]
     counter = 0
+    p "********************"
+    p params["poll_array"]
+    p "*********************"
     params["poll_array"].each do |poll|
       poll = Poll.create(poll_params(poll))
       poll.group_id = session[:group_id]

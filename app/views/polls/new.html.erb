@@ -1,11 +1,4 @@
-<!-- <input id="pac-input" class="controls" type="text" placeholder="Location">
 
-<div class="container">
-   <div class="card-panel teal">
-    <div id="map" style="width: 75%; height: 20%; position: absolute;">
-<!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
- -->
 
 <title>Place Autocomplete Address Form</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -61,44 +54,26 @@
 
         // When the user selects an address from the dropdown, populate the address
         // fields in the form.
-        autocomplete.addListener('place_changed', fillForm);
-      }
-        function fillForm(){
+
+        // autocomplete.addListener('place_changed', fillForm);
+        $(".location_button").on("click", function(event){
+          event.preventDefault()
+          var i = 0
+          if ($("#fieldarray0").val() != "" && $("#fieldarray1").val() === ""){
+            i = 1
+          }
+          if ($("#fieldarray0").val() != "" && $("#fieldarray1").val() != ""){
+            i = 2
+          }
           var place = autocomplete.getPlace();
-          document.getElementById("title_field").value = place.name + "," +place.formatted_address;
+          var num = i
+          var n = num.toString();
+        $("#fieldarray" + i).val(place.name + "," + place.formatted_address)
+        $("#autocomplete").val("")
+})
 
         }
-      // function fillInAddress() {
-      //   // Get the place details from the autocomplete object.
-      //   var place = autocomplete.getPlace();
-      //   console.log("******************")
-      //   console.log(place)
-      //   console.log(place.formatted_address)
-      //   console.log("******************")
 
-
-      //   for (var component in componentForm) {
-      //     document.getElementById(component).value = '';
-      //     document.getElementById(component).disabled = false;
-      //   }
-
-      //   // Get each component of the address from the place details
-      //   // and fill the corresponding field on the form.
-      //   for (var i = 0; i < place.address_components.length; i++) {
-      //     var addressType = place.address_components[i].types[0];
-      //     if (componentForm[addressType]) {
-      //       var val = place.address_components[i][componentForm[addressType]];
-      //       document.getElementById(addressType).value = val;
-      //       console.log("******************")
-      //       console.log(val)
-      //       console.log("******************")
-
-      //     }
-      //   }
-      // }
-
-      // Bias the autocomplete object to the user's geographical location,
-      // as supplied by the browser's 'navigator.geolocation' object.
       function geolocate() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -119,6 +94,8 @@
         async defer></script>
 
 
+
+
 <div class="container">
 
   <% questions_array = ["location", "date", "time"] %>
@@ -135,21 +112,25 @@
     </div>
     <br>
     <br>
+    <button class="location_button">Add Location</button>
     <br>
       <%= fields_for 'poll_array[]', poll do |p| %>
-     <!-- p.hidden_field :question, value: 'location' %><br> -->
+     <%= p.hidden_field :question, value: 'location' %><br>
 
-            <%= p.fields_for :choices do |choices_form| %>
+        <% j = 0 %>
+        <%= p.fields_for :choices do |choices_form| %>
+        <% field_array = ["fieldarray0","fieldarray1","fieldarray2"] %>
               <%= choices_form.label :option %>
-              <%= choices_form.text_field :title, id: "title_field"%><br>
-            <% end %>
-      <% end %>
+              <%= choices_form.text_field :title, id: field_array[j]%><br>
+              <% j += 1 %>
+             <% end %>
+    <% end %>
 <br><br><br>
 
     <% else %>
 
       <%= fields_for 'poll_array[]', poll do |p| %>
-     <!-- p.hidden_field :question, value: 'location' %><br> -->
+     <%=p.hidden_field :question, value: 'location' %><br>
 
             <%= p.fields_for :choices do |choices_form| %>
               <%= choices_form.label :option %>
