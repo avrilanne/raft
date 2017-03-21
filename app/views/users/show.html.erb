@@ -1,3 +1,15 @@
+<img class="prof">
+<%= image_tag @user.avatar.url(:thumb) %>
+<br>
+</img>
+
+<%= form_for @user, url: edit_user_path(@user), html: { multipart: true } do |form| %>
+  <%= form.file_field :avatar %>
+  <%= form.submit 'upload' %>
+<% end %>
+
+
+
 <div class="container center">
   <h5 class="center"> Hey <%= @user.first_name %>! </h5>
 <p>POINTS: <%= current_user.points %></p>

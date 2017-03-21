@@ -1,3 +1,4 @@
+
 # Be sure to restart your server when you modify this file.
 #
 # Points are a simple integer value which are given to "meritable" resources
@@ -16,8 +17,8 @@ module Merit
 
       # score 10, to: :user, :on => 'users#create'
       score 15, on: 'users#create'
-      score -50, on: 'events#create'
-      score 70, on: 'groups#create'
+      score 25, on: 'events#create'
+      score 40, on: 'groups#create'
       score 25, on: 'invites#create'
       score 30, on: 'memberships#create'
       score 20, on: 'rsvps#create'
