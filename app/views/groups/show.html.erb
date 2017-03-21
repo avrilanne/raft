@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container center">
 <div class="title center">
   <h5 class="center"> <%=@group.name%></h5>
 
 
 <% if @group.images.length > 0 %>
-<h4> Photos from our last event!</h4>
+<h6> Photos from our last event!</h6>
 
 <div class="group-carousel center">
 <div id="carouselExampleSlidesOnly" class="carousel slide container" data-ride="carousel">
@@ -18,16 +18,21 @@
 </div>
 <% end %>
 </div>
-
-<h4> Upload photos of the Raft!</h4>
+<br>
+<p> Upload photos of the Raft!</p>
 <%= form_for @image, url: group_images_path(@group) do |form| %>
+<label class="btn btn-default purple lighten-1 btn-file">
+  Choose File
   <%= form.file_field :group_image %>
-  <%= form.submit %>
+    </label>
+    <br>
+    <br>
+  <%= form.submit 'Add Photos of the Raft', :class => 'btn-success' %>
 <% end %>
 
 
-<div class="card-panel teal">
-  <p class="center">Currently on the Raft™</p>
+<div class="card-panel grey lighten-3 center">
+  <p class="center">Raft Members</p>
   <% @members.each do |member| %>
   <i><p class="center"><%= member.first_name %></p></i>
   <% end  %>
@@ -41,7 +46,7 @@
 
 </div>
 
-<div class="card-panel teal">
+<div class="card-panel grey lighten-3 center">
 
   <h5>Events!</h5>
   <%  @events.each do |event| %>
@@ -53,8 +58,8 @@
 
 </div>
 
-<div class="card-panel teal">
-  <h6 class="title-text"><strong>Invite friends onto your Raft™</strong></h6>
+<div class="card-panel grey lighten-3 center">
+  <h6 class="title-text"><strong>Invite friends onto your Raft</strong></h6>
   <%= form_tag :_invitations, :method => 'get' do %>
   <p class="friend-search center">
     <label>Find Friends by username: </label>
@@ -66,15 +71,18 @@
 </div>
 
 
-<div class= "comments card-panel lime">
+<div class= "comments grey lighten-2">
 
 <%= render partial: '/comments/new_group', locals: { commentable: @group } %>
 
+</div>
+<div class="list-group">
+<p>Comments:</p>
 <% @group.comments.limit(3).each do |comment| %>
-<p> <%= comment.body %> </p>
-<em><%= comment.author.username %></em>
+<p class="list-group-item"> <%= comment.body %>
+<em> ~ <%= comment.author.username %></em> <%= comment.created_at.strftime("-- %m/%d/%Y") %>
+</p>
 <% end %>
-
 </div>
 
 </div>

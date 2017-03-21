@@ -1,31 +1,37 @@
+<div class="container center">
 <img class="prof">
 <%= image_tag @user.avatar.url(:thumb), :class=>"circle" %>
 <br>
 </img>
-
+<br>
 <%= form_for @user, :url => { :action => "update" } do |form| %>
-  <%= form.file_field :avatar %>
-  <%= form.submit %>
+<label class="btn btn-default purple lighten-1 btn-file">
+  Choose File
+  <%= form.file_field :avatar%>
+  </label>
+  <br>
+  <br>
+  <%= form.submit 'Add Avatar', :class => 'btn-success' %>
 <% end %>
 
-<div class="container center">
+<div class="card-panel grey lighten-3 center">
   <h5 class="center"> Hey <%= @user.first_name %>! </h5>
-<p>POINTS: <%= current_user.points %></p>
+</div>
 <% if @groups.length > 0 %>
 
-<div class="card-panel orange darken-4 center">
-  <h5>Rafts you're a ridin'</h5>
+<div class="card-panel grey lighten-3 center">
+  <p>Rafts you're a ridin'</p>
   <ul>
   <% @groups.each do |group| %>
     <p><%= link_to group.name, group_path(group), :class =>"waves-effect blue darken-4 btn" %></p>
   <% end  %>
 <% else %>
-  <h6 class="center">You have no Rafts yet...Come on!!!</h6>
+  <p class="center">You have no Rafts yet...Come on!!!</p>
 <% end %>
 </div>
-            <i class="fa fa-life-ring" aria-hidden="true"></i>
-<div class="card-panel orange darken-4 center">
+<div class="card-panel grey lighten-3 center">
 </ul>
+
 <% if current_user.invitations.length > 0 %>
   <p>Check Out Your Invites!</p>
 
@@ -37,26 +43,25 @@
     <% end  %>
   </ul>
 <% else %>
-    <h5>You have no invites...shucks</h5>
-
+    <p>You have no invites...shucks</p>
 <% end %>
 </div>
-            <i class="fa fa-life-ring" aria-hidden="true"></i>
 
 
- <div class="card-panel orange darken-4 left">
+ <div class="card-panel grey lighten-3">
   <%= render partial: '/groups/new' %>
 
 </div>
 </div>
 
+<% if current_user.upcoming_events.length > 0 %>
  <div class="card-panel red left">
 <p> UPCOMING EVENTS </p>
     <% current_user.upcoming_events.each do |event| %>
     <%= link_to event.name, group_event_path(current_user, event), :style => "color: white; text-decoration: underline;" %>
     <% end %>
 </div>
-
+ <% end %>
 
 <!-- avrils just playing -->
 <!-- <div class="recent-activity card-panel blue">
