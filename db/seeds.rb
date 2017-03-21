@@ -16,6 +16,9 @@ User.create(first_name: "Nononono", last_name: "?", username: "koalalover4lyfe",
 
 User.create(first_name: "Sarah", last_name: "Dudek", username: "gumptiongranny4", email: "sarah.marie.dudek@gmail.com", password_digest: "password")
 
+User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "yycb3xcze3@example.com", password: "password")
+
+
 Membership.create(group_id: 1, user_id: 1, fee: "$5", paid: true)
 Membership.create(group_id: 1, user_id: 2, fee: "$5", paid: true)
 Membership.create(group_id: 1, user_id: 3, fee: "$5", paid: true)
