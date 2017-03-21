@@ -1,6 +1,8 @@
 <div class="container">
 
-  <% questions_array = ["location", "date", "time"] %>
+<div class="container">
+
+  <% questions_array = ["date", "time"] %>
   <% counter = 0 %>
     <div class="card-panel teal">
   <%= form_for @poll do |f|%>
@@ -8,7 +10,7 @@
  <h5> <%= questions_array[counter]%> </h5>
 
   <%= fields_for 'poll_array[]', poll do |p| %>
-    <%= p.hidden_field :question, value: 'location' %><br>
+ <!-- p.hidden_field :question, value: 'location' %><br> -->
 
         <%= p.fields_for :choices do |choices_form| %>
           <%= choices_form.label :option %>

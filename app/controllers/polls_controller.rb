@@ -5,7 +5,7 @@ class PollsController < ApplicationController
 
   def new
     @poll_array = []
-    3.times do
+    2.times do
       @poll = Poll.new
       3.times { @poll.choices.build}
       @poll_array << @poll
@@ -14,7 +14,7 @@ class PollsController < ApplicationController
 
 
   def create
-    questions_array = ["location", "date", "time"]
+    questions_array = ["date", "time"]
     counter = 0
     params["poll_array"].each do |poll|
       poll = Poll.create(poll_params(poll))
