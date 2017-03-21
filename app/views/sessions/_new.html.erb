@@ -1,14 +1,16 @@
-<div class='container'>
-<h5 class="center"> Login to Raft™! </h5>
-  <span class="border-0">
-    <% if @errors %>
-  <span>Something went wrong:</span>
+
+  <h5 class="center"> Login to Raft™! </h5>
+  <div class="alert-danger">
+      <% if @errors %>
+    <span>Something went wrong:</span>
   <ul class="error-list pad-b-2">
-    <% @errors.each do |error| %>
+      <% @errors.each do |error| %>
       <li class="error-item"><%= error %></li>
-    <% end %>
+      <% end %>
   </ul>
-<% end %>
+      <% end %>
+</div>
+
     <%= form_for :session, :html => {:class => "form-horizontal"}, url: '/sessions' do |f| %>
       <div class="form-group">
       <%= f.label :email, "Email:", class: "col-sm-2 control-label" %>
@@ -20,6 +22,9 @@
       <%= f.submit "Login!", class: "waves-effect purple lighten-1 btn" %>
       </div>
       <% end %>
+
+
     </div>
-  </span>
-</div>
+
+
+

@@ -36,4 +36,3 @@ Group.create(admin_id: 1, name: "Friend Group")
 Group.create(admin_id: 2, name: "Float Crew")
 Group.create(admin_id: 3, name: "The Dudes")
 
-Point.create(user_id: 5, value: 10)

@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'cocoon'
 gem 'twitter-bootstrap-rails'
-
+gem 'bootstrap_form'
 gem 'slim-rails'
 gem 'merit'
 # Use jquery as the JavaScript library
