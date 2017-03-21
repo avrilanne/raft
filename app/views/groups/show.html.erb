@@ -41,4 +41,18 @@
   <% end %>
   </div>
 </div>
+
+
+<div class= "comments card-panel lime">
+
+<%= render partial: '/comments/new_group', locals: { commentable: @group } %>
+
+<% @group.comments.limit(3).each do |comment| %>
+<p> <%= comment.body %> </p>
+<em><%= comment.author.username %></em>
+<% end %>
+
 </div>
+
+</div>
+
