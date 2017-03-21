@@ -1,0 +1,10 @@
+<%= form_for :comment, url: event_comments_path(commentable) do |f| %>
+    <div class="form-group">
+      <%= f.label :body, "Comment", class: "col-sm-2 control-label" %>
+      <%= f.text_field :body, class: 'form-inline' %><br>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Leave Comment!",:class => "waves-effect purple lighten-1 btn" %>
+    </div>
+<% end %>
