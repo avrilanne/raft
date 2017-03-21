@@ -14,6 +14,9 @@ User.create(first_name: "Al", last_name: "Musavi", username: "ucancallmeal", ema
 
 User.create(first_name: "Nononono", last_name: "?", username: "koalalover4lyfe", email:"tatertotfreak84@hotmail.com", password: "123")
 
+User.create(first_name: "Sarah", last_name: "Dudek", username: "gumptiongranny4", email: "sarah.marie.dudek@gmail.com", password_digest: "password")
+
+User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "yycb3xcze3@example.com", password: "password")
 
 
 Membership.create(group_id: 1, user_id: 1, fee: "$5", paid: true)
@@ -33,4 +36,4 @@ Group.create(admin_id: 1, name: "Friend Group")
 Group.create(admin_id: 2, name: "Float Crew")
 Group.create(admin_id: 3, name: "The Dudes")
 
-
+Point.create(user_id: 5, value: 10)
