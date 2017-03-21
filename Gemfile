@@ -44,6 +44,7 @@ gem "paperclip", "~> 5.0.0"
 gem 'rails_12factor', group: :production
 
 group :development, :test do
+  gem 'pry'
   gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

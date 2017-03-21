@@ -24,6 +24,7 @@ class GroupsController < ApplicationController
     @members = @group.members
     @events = @group.events
     @invitation = Invitation.where("group_id = #{@group.id} AND recipient_id = #{current_user.id}")
+    @image = Image.new
 
     # respond_to do |format|
     #   format.html {redirect_to group_path(@group)}
