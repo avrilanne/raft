@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :answers, only: [:create]
 
-  resources :users, except: [:index, :destroy, :update] do
+  resources :users, except: [:index, :destroy] do
     resources :memberships
   end
 
