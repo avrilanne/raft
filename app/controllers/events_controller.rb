@@ -31,6 +31,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+
     @event.host_id = current_user.id
     @event.group_id = params[:group_id]
     p @event
