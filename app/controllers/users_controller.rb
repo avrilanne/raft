@@ -1,20 +1,21 @@
 class UsersController < ApplicationController
-
   def new
   end
 
-  def index
-    if params[:search]
-      @users = User.search(params[:search])
-    else
-      @users = User.all
-    end
+  # def index
+  #   if logged_in?
+  #     if params[:search]
+  #       @users = User.search(params[:search])
+  #     else
+  #       @users = User.all
+  #     end
 
-    respond_to do |format|
-      format.html {@users = User.search(params[:search])}
-      format.json {@users = User.search(params[:search])}
-    end
-  end
+  #     respond_to do |format|
+  #       format.html {@users = User.search(params[:search])}
+  #       format.json {@users = User.search(params[:search])}
+  #     end
+  #   end
+  # end
 
   def create
     @user = User.new(user_params)
@@ -27,13 +28,17 @@ class UsersController < ApplicationController
     end
   end
 
-
   def show
     session[:url]
-
     @user = find_user
-    @groups = @user.groups
-
+    if @user != nil
+      @groups = @user.groups
+      if current_user != @user
+        redirect_to root_path, text: "Wrong Format"
+      end
+    else
+      redirect_to root_path
+    end
     # redirect_to user_memberships_path(@user)
 
     # if @user.dwolla_verified == true
@@ -48,24 +53,24 @@ class UsersController < ApplicationController
       # replace with a button to send funds to raft members
     # else
       # they can see everything
-  end
+    end
 
-  def edit
-    @user = find_user
-  end
+    def edit
+      @user = find_user
+    end
 
-  def update
-    @user = find_user
-    @user.update_attributes(user_params)
-    redirect_to :back
-  end
+    def update
+      @user = find_user
+      @user.update_attributes(user_params)
+      redirect_to :back
+    end
 
-  private
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :avatar)
-  end
+    private
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :avatar)
+    end
 
-  def find_user
-    @user = User.find_by(id: params[:id])
+    def find_user
+      @user = User.find_by(id: params[:id])
+    end
   end
-end

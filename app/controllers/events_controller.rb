@@ -1,16 +1,10 @@
 class EventsController < ApplicationController
 
-  def index
-    @events = Event.where("group_id = params[:group_id")
-  end
-
   def show
     @event = Event.find_by(id: params[:id])
     @poll = Poll.find_by(event_id: @event.id)
-    @events_polls = @event.polls
-    p"********************"
-      p @events_polls
-      p"********************"
+    if @event != nil && @poll != nil
+      @events_polls = @event.polls
       @highest_location = highest_choice(@events_polls[0])
       @highest_date = highest_choice(@events_polls[1])
       @highest_time = highest_choice(@events_polls[2])
@@ -18,23 +12,28 @@ class EventsController < ApplicationController
       @event.date = @highest_date
       @event.time = @highest_time
       @event.save
-    @raft = @event.group
-    p "this is the raft!!!!!"
-    p @raft
-    @rsvp = Rsvp.find_by(user_id: current_user.id, event_id: params[:id])
+      @raft = @event.group
+      @rsvp = Rsvp.find_by(user_id: current_user.id, event_id: params[:id])
+    else
+      redirect_to groups_path
+    end
   end
 
   def new
-    @event = Event.new
     @group = Group.find_by(id: params[:group_id])
+    if logged_in? && @group.members.include?(current_user)
+      @event = Event.new
+      @group = Group.find_by(id: params[:group_id])
+    else
+      redirect_to root_path
+    end
   end
 
   def create
     @event = Event.new(event_params)
+
     @event.host_id = current_user.id
     @event.group_id = params[:group_id]
-    p @event
-
     session[:group_id] = @event.group_id
     if @event.save
       session[:event_id] = @event.id
@@ -47,7 +46,7 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     event.destroy
-    redirect_to group_events_path, notice: 'Event was successfully destroyed.'
+    redirect_to group_path, notice: 'Event was successfully destroyed.'
   end
 
 

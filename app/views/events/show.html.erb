@@ -30,6 +30,13 @@
     <p> Date: <%=@highest_date%> </p>
     <p> Time: <%=@highest_time %> </p>
 
+
+<% if current_user = @event.host %>
+  <%= form_for @event, method: :delete do |f| %>
+  <%= f.submit "Delete" %>
+  <% end %>
+  <% end %>
+
 <% end %>
 </div>
 
