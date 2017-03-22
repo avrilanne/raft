@@ -1,5 +1,5 @@
 
-
+<head>
 <title>Place Autocomplete Address Form</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -46,16 +46,9 @@
       };
 
       function initAutocomplete() {
-        // Create the autocomplete object, restricting the search to geographical
-        // location types.
         autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-            {types: ['establishment']});
+            (document.getElementById('autocomplete'))  );
 
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-
-        // autocomplete.addListener('place_changed', fillForm);
         $(".location_button").on("click", function(event){
           event.preventDefault()
           var i = 0
@@ -70,9 +63,8 @@
           var n = num.toString();
         $("#fieldarray" + i).val(place.name + "," + place.formatted_address)
         $("#autocomplete").val("")
-})
-
-        }
+  })
+}
 
       function geolocate() {
         if (navigator.geolocation) {
@@ -97,6 +89,7 @@
 
 
 <div class="container center">
+
 
   <% questions_array = ["location", "date", "time"] %>
   <% counter = 0 %>
