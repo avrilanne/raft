@@ -60,4 +60,8 @@ class User < ActiveRecord::Base
     end
     return @accounted
   end
+
+  def is_host?(event)
+    event.host_id == self.id
+  end
 end

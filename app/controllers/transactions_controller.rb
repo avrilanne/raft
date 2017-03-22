@@ -20,7 +20,7 @@ class TransactionsController < ApplicationController
   p transfer
   p transfer.status
   transfer.headers[:location] # => "https://api.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388"
-    if transfer.status = 201
+    if transfer.status == 201
       current_user.update_attributes(fine_owed: false)
     end
   redirect_to user_path(current_user)
