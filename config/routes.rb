@@ -8,10 +8,10 @@ Rails.application.routes.draw do
 
   get "oauth/authenticate"
 
-  resources :groups do
-    resources :events
-    resources :invitations
+  resources :groups, except: [:index, :destroy] do
+    resources :events, except: [:index]
     resources :comments
+    resources :invitations
     resources :images
   end
 
@@ -23,11 +23,11 @@ Rails.application.routes.draw do
   resources :sessions, except: [:index]
 
 
-  resources :polls
+  resources :polls, except: [:index]
 
   resources :answers, only: [:create]
 
-  resources :users, except: [:index, :destroy] do
+  resources :users, except: [:destroy, :index] do
     resources :memberships
   end
 
@@ -36,5 +36,5 @@ Rails.application.routes.draw do
   end
 
   get '/groups/:id/invitations' => 'invitations#index', as: '_invitations'
-
+  get "*any", via: :all, to: "errors#not_found"
 end

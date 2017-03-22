@@ -21,25 +21,21 @@ class GroupsController < ApplicationController
   def show
     @comment = Comment.new
     @group = Group.find_by(id: params[:id])
-    @members = @group.members
-    @events = @group.events
-    @invitation = Invitation.where("group_id = #{@group.id} AND recipient_id = #{current_user.id}")
-    @image = Image.new
-
+    if @group != nil && @group.members.include?(current_user)
+      @members = @group.members
+      @events = @group.events
+      @invitation = Invitation.where("group_id = #{@group.id} AND recipient_id = #{current_user.id}")
+      @image = Image.new
+    else
+      redirect_to root_path
+    end
     # respond_to do |format|
     #   format.html {redirect_to group_path(@group)}
     #   format.js {}
     # end
   end
 
-
-  def destroy
-    group = Group.find_by(id: params[:id])
-    group.destroy
-    redirect_to groups_path, notice: 'Group was successfully destroyed.'
-  end
-
-private
+  private
 
   def group_params
     params.require(:group).permit(:name, :admin_id)

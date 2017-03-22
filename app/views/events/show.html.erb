@@ -133,3 +133,8 @@
 </div>
 <b>
 
+<% if current_user = @event.host %>
+  <%= form_for @event, method: :delete do |f| %>
+  <%= f.submit "Delete" %>
+  <% end %>
+  <% end %>
