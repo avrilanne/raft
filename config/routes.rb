@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  root 'memberships#index'
+
+  post "transactions/send_funds"
+
+  get "oauth/begin"
+  get "oauth/return"
+
+  get "oauth/authenticate"
+
   resources :groups do
     resources :events
     resources :invitations
@@ -28,5 +37,4 @@ Rails.application.routes.draw do
 
   get '/groups/:id/invitations' => 'invitations#index', as: '_invitations'
 
-  root 'memberships#index'
 end
