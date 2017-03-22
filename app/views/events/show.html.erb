@@ -26,9 +26,9 @@
 <p> So far it looks like.... </p>
 <% end %>
 
-    <p> Location: <%=highest_choice(@events_polls[0]).split(",")[0] %> </p>
-    <p> Date: <%=highest_choice(@events_polls[1])%> </p>
-    <p> Time: <%=highest_choice(@events_polls[2]) %> </p>
+    <p> Location: <%=@highest_location.split(",")[0] %> </p>
+    <p> Date: <%=@highest_date%> </p>
+    <p> Time: <%=@highest_time %> </p>
 
 <% end %>
 </div>

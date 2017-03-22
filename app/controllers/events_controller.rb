@@ -8,6 +8,16 @@ class EventsController < ApplicationController
     @event = Event.find_by(id: params[:id])
     @poll = Poll.find_by(event_id: @event.id)
     @events_polls = @event.polls
+    p"********************"
+      p @events_polls
+      p"********************"
+      @highest_location = highest_choice(@events_polls[0])
+      @highest_date = highest_choice(@events_polls[1])
+      @highest_time = highest_choice(@events_polls[2])
+      @event.location = @highest_location
+      @event.date = @highest_date
+      @event.time = @highest_time
+      @event.save
     @raft = @event.group
     p "this is the raft!!!!!"
     p @raft
