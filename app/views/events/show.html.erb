@@ -87,6 +87,7 @@
 <div class="card-panel grey lighten-3 center">
   <ul class-"attendees">
     <p> Who's going? </p>
+<%= render partial: '/events/charge_users' %>
 
     <% if current_user = @event.host %>
         <div class="talkbubble">
@@ -98,9 +99,9 @@
       <li>
         <%= image_tag attendee.avatar.url(:tiny), :class=>"circle" %>
         <%= attendee.first_name%> <%=attendee.last_name %>
-        <% if !attendee.accounted_for(@event) && current_user = @event.host%>
+        <% if attendee.accounted_for(@event) && current_user = @event.host%>
           <%= form_for [@event, rsvp = Rsvp.find_by(user_id: attendee.id, event_id: @event.id)], method: :patch do |f|%>
-            <%= f.submit "Present",:class => "waves-effect purple lighten-1 btn-xs" %>
+            <%= f.submit "Absent",:class => "waves-effect purple lighten-1 btn-xs" %>
             <!-- add a button here to mark someone absent, route to initiate a transfer, and it will denote that a user has been fined, and can't view certain things until they pay -->
             <!-- replace event information for user with send_funds route that will pay out to all other raft members -->
           <% end %>

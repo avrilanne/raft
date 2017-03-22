@@ -27,7 +27,7 @@ class OauthController < ApplicationController
 
     if funding_sources._embedded['funding-sources'][0]['status'] == 'verified'
       current_user.dwolla_verified = true
-      cuurent_user.account_url = @session[:url]
+      current_user.account_url = session[:url]
       current_user.save
     end
 

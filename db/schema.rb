@@ -154,11 +154,11 @@ ActiveRecord::Schema.define(version: 20170321190512) do
   end
 
   create_table "rsvps", force: :cascade do |t|
-    t.integer  "user_id",                    null: false
-    t.integer  "event_id",                   null: false
-    t.boolean  "present",    default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "user_id",                   null: false
+    t.integer  "event_id",                  null: false
+    t.boolean  "present",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "sashes", force: :cascade do |t|
