@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     answers.any? {|v| v.choice.poll == poll}
   end
 
+   def fine
+    self.fine_owed = true
+  end
+
   def self.search(search)
     where("username LIKE ?", "%#{search}%")
   end

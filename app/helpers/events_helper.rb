@@ -29,14 +29,14 @@ module EventsHelper
   end
 
     def highest_choice(poll)
-    @num = 0
-    @highest_name = ''
-    poll.choices.each do |choice|
-      if choice.answers.count > @num
-        @num = choice.answers.count
-        @highest_name = choice.title
+      @num = 0
+      @highest_name = ''
+      poll.choices.each do |choice|
+        if choice.answers.count > @num
+          @num = choice.answers.count
+          @highest_name = choice.title
+        end
       end
-    end
     return "#{@highest_name}"
   end
 

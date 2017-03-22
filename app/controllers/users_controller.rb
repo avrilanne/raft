@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 
 
   def show
+    session[:url]
 
     @user = find_user
     @groups = @user.groups

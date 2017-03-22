@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(version: 20170321190512) do
     t.boolean  "dwolla_verified",     default: false
     t.boolean  "fine_owed",           default: false
     t.string   "password_digest",                     null: false
+    t.string   "account_url"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "sash_id"
