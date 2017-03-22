@@ -14,4 +14,16 @@ class ApplicationController < ActionController::Base
   def set_user(user)
     session[:user_id] = user.id
   end
+
+  def highest_choice(poll)
+      @num = 0
+      @highest_name = ''
+      poll.choices.each do |choice|
+        if choice.answers.count > @num
+          @num = choice.answers.count
+          @highest_name = choice.title
+        end
+      end
+    return "#{@highest_name}"
+  end
 end
