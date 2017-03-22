@@ -9,7 +9,6 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :fine_owed, default: false
       t.string :password_digest, null: false
       t.string :account_url
-
       t.timestamps null: false
     end
   end

@@ -50,13 +50,16 @@
 <div class="card-panel grey lighten-3 center">
 
   <h5>Events!</h5>
+  <% if @events.length > 0 %>
   <%  @events.each do |event| %>
   <ul>
+    <% if event != nil %>
     <%= link_to event.name, group_event_path(@group, event), :style => "color: black; text-decoration: underline;" %>
+    <% end %>
   </ul>
   <% end %>
+    <% end %>
   <%= link_to "new event", new_group_event_path(@group), :class => "waves-effect purple lighten-1 btn"  %>
-
 </div>
 
 <div class="card-panel grey lighten-3 center">
