@@ -5,8 +5,8 @@
 <%= form_tag answers_path, method: :post, id: 'answer_form' do  %>
 
 <% hidden_field_tag 'event_poll[id], @event_poll.id'  %>
-  <div class="card-panel teal">
-<h6 class="center"><%= event_poll.question %></h6>
+<div class="card-panel grey lighten-3 center">
+<h6 class="center"><%= event_poll.question.upcase %></h6>
 
 <%= render partial: '/polls/choice', collection: event_poll.choices, as: :choice, locals: {event_poll:event_poll}%>
 <%#= event_poll.answers_summary %>

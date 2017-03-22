@@ -1,4 +1,3 @@
-
   <h5 class="center"> Login to Raft™! </h5>
   <div class="alert-danger">
       <% if @errors %>
@@ -11,6 +10,7 @@
       <% end %>
 </div>
 
+ <div class="card-panel grey lighten-3">
     <%= form_for :session, :html => {:class => "form-horizontal"}, url: '/sessions' do |f| %>
       <div class="form-group">
       <%= f.label :email, "Email:", class: "col-sm-2 control-label" %>
@@ -26,5 +26,5 @@
 
     </div>
 
-
+</div>
 
