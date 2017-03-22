@@ -96,23 +96,27 @@
 
 
 
-<div class="container">
+<div class="container center">
 
   <% questions_array = ["location", "date", "time"] %>
   <% counter = 0 %>
-    <div class="card-panel teal">
+    <div class="card-panel grey lighten-3 center">
   <%= form_for @poll do |f|%>
   <% @poll_array.each do |poll| %>
  <h5> <%= questions_array[counter]%> </h5>
 
     <% if counter == 0 %>
+
+  <div class="border">
     <div id="locationField">
       <textarea id="autocomplete" placeholder="Enter your address"
              onFocus="geolocate()" type="text"></textarea>
     </div>
+  </div>
     <br>
     <br>
-    <button class="location_button">Add Location</button>
+    <br>
+    <button class="location_button btn btn-default purple lighten-1">Add Location</button>
     <br>
       <%= fields_for 'poll_array[]', poll do |p| %>
      <%= p.hidden_field :question, value: 'location' %><br>
@@ -120,12 +124,12 @@
         <% j = 0 %>
         <%= p.fields_for :choices do |choices_form| %>
         <% field_array = ["fieldarray0","fieldarray1","fieldarray2"] %>
-              <%= choices_form.label :option %>
+              <%#= choices_form.label :option %>
               <%= choices_form.text_field :title, id: field_array[j]%><br>
               <% j += 1 %>
              <% end %>
     <% end %>
-<br><br><br>
+    <br><br><br>
 
     <% else %>
 
@@ -133,7 +137,7 @@
      <%=p.hidden_field :question, value: 'location' %><br>
 
             <%= p.fields_for :choices do |choices_form| %>
-              <%= choices_form.label :option %>
+              <%#= choices_form.label :option %>
               <%= choices_form.text_field :title %><br>
             <% end %>
       <% end %>

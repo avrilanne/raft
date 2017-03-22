@@ -52,16 +52,16 @@
   <%= render partial: '/groups/new' %>
 
 </div>
-</div>
 
 <% if current_user.upcoming_events.length > 0 %>
- <div class="card-panel red left">
-<p> UPCOMING EVENTS </p>
+<div class="card-panel grey lighten-3 center">
+<p> Upcoming Events </p>
     <% current_user.upcoming_events.each do |event| %>
-    <%= link_to event.name, group_event_path(current_user, event), :style => "color: white; text-decoration: underline;" %>
+    <%= link_to event.name, group_event_path(current_user, event), :style => "color: black; text-decoration: underline;" %>
     <% end %>
 </div>
  <% end %>
+</div>
 
 <!-- avrils just playing -->
 <!-- <div class="recent-activity card-panel blue">

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  has_attached_file :avatar, styles: { thumb: "100x100#"}, default_url: "thumb/missing.png"
+  has_attached_file :avatar, styles: {tiny:"50x50#", thumb: "100x100#"}, default_url: "thumb/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   has_merit

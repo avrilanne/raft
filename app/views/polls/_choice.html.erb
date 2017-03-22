@@ -4,13 +4,18 @@
 
 <% unless current_user.answered_for?(event_poll)  %>
 
-<p> click here<%= radio_button_tag 'choice[id]', choice.id %> </p>
-
+<div class="btn-group" data-toggle="buttons">
+  <label class="btn btn-primary btn-xs">
+    Select<%= radio_button_tag 'choice[id]', choice.id%>
+  </label>
+</div>
 
 
 <br>
 <% end %>
-<%= choice.title %>
+<ul>
+<li> <%= choice.title %> </li>
+</li>
 <br>
 <% end %>
 
