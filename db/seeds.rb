@@ -12,7 +12,7 @@ User.create(first_name: "Avril", last_name: "Dunleavy", username: "bangarang", e
 
 User.create(first_name: "Al", last_name: "Musavi", username: "ucancallmeal", email:"bigal@chaitown.com", password: "123")
 
-User.create(first_name: "Nononono", last_name: "?", username: "koalalover4lyfe", email:"tatertotfreak84@hotmail.com", password: "123")
+User.create(first_name: "Nononono", last_name: "?", username: "koala4lyfe", email:"tatertotfreak84@hotmail.com", password: "123")
 
 User.create(first_name: "Sarah", last_name: "Dudek", username: "gumptiongranny4", email: "sarah.marie.dudek@gmail.com", password_digest: "password")
 
