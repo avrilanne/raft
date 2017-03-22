@@ -31,6 +31,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+
     @event.host_id = current_user.id
     @event.group_id = params[:group_id]
     session[:group_id] = @event.group_id
@@ -46,6 +47,21 @@ class EventsController < ApplicationController
     event = Event.find(params[:id])
     event.destroy
     redirect_to group_path, notice: 'Event was successfully destroyed.'
+  end
+
+
+  def charge_users
+    event = Event.find_by(id: params[:id])
+    rsvps = event.rsvps
+    absent_users = []
+
+    rsvps.each do |rsvp|
+      if rsvp.present == false
+        absent_user = rsvp.attendee
+        absent_user.fine
+      end
+    end
+    redirect_to :back
   end
 
   private

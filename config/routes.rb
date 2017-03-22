@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'memberships#index'
 
   post "transactions/send_funds"
+  # put "charge_users"
 
   get "oauth/begin"
   get "oauth/return"
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :events do
+
     resources :comments
     resources :rsvps, only: [:new, :create, :destroy, :edit, :update]
   end
@@ -34,7 +36,7 @@ Rails.application.routes.draw do
   resources :events do
     resources :comments
   end
-
+  put 'events/:id/charge_users' => 'events#charge_users', as: 'event_charge_users'
   get '/groups/:id/invitations' => 'invitations#index', as: '_invitations'
   get "*any", via: :all, to: "errors#not_found"
 end

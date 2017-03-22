@@ -19,31 +19,44 @@ class PollsController < ApplicationController
   def create
     questions_array = ["location", "date", "time"]
     counter = 0
-    params["poll_array"].each do |poll|
-      if counter == 1
-        poll = Poll.create(poll_params(poll))
-        poll.group_id = session[:group_id]
-        poll.event_id = session[:event_id]
-        poll.question = questions_array[counter]
-        poll.save
-        poll.choices.each_with_index do |each_choice, i|
-          if Chronic.parse(each_choice.title) != nil
-            poll.choices[i].title = Chronic.parse(each_choice.title).strftime("%B %d, %Y")
+    event = Event.find_by(id: session[:event_id])
+    poll = Poll.where(event_id: session[:event_id])
+    poll.each do |each_poll|
+      Choice.where(poll_id: each_poll.id).delete_all
+    end
+    Poll.where(event_id: session[:event_id]).delete_all
+      params["poll_array"].each do |poll|
+        if counter == 1
+          poll = Poll.create(poll_params(poll))
+          poll.group_id = session[:group_id]
+          poll.event_id = session[:event_id]
+          poll.question = questions_array[counter]
+          poll.save
+          poll.choices.each_with_index do |each_choice, i|
+            if Chronic.parse(each_choice.title) != nil
+              poll.choices[i].title = Chronic.parse(each_choice.title).strftime("%B %d, %Y")
+            end
           end
-        end
-        poll.save
-        counter += 1
+          poll.save
+          counter += 1
       elsif counter == 2
+          poll = Poll.create(poll_params(poll))
+          poll.group_id = session[:group_id]
+          poll.event_id = session[:event_id]
+          poll.question = questions_array[counter]
+          poll.save
+          poll.choices.each_with_index do |each_choice, i|
+            if Chronic.parse(each_choice.title) != nil
+              poll.choices[i].title = Chronic.parse(each_choice.title).strftime("%I:%M %p")
+            end
+          end
+          poll.save
+          counter += 1
+      else
         poll = Poll.create(poll_params(poll))
         poll.group_id = session[:group_id]
         poll.event_id = session[:event_id]
         poll.question = questions_array[counter]
-        poll.save
-        poll.choices.each_with_index do |each_choice, i|
-          if Chronic.parse(each_choice.title) != nil
-            poll.choices[i].title = Chronic.parse(each_choice.title).strftime("%I:%M %p")
-          end
-        end
         poll.save
         counter += 1
       else
@@ -53,6 +66,7 @@ class PollsController < ApplicationController
         poll.question = questions_array[counter]
         poll.save
         counter += 1
+
       end
     end
 
