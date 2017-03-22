@@ -59,13 +59,6 @@ class PollsController < ApplicationController
         poll.question = questions_array[counter]
         poll.save
         counter += 1
-      else
-        poll = Poll.create(poll_params(poll))
-        poll.group_id = session[:group_id]
-        poll.event_id = session[:event_id]
-        poll.question = questions_array[counter]
-        poll.save
-        counter += 1
 
       end
     end
