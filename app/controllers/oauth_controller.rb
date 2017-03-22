@@ -14,18 +14,14 @@ class OauthController < ApplicationController
   end
 
   def return
-    # binding.pry
-    @account_token = auth.callback(params)
 
+    @account_token = auth.callback(params)
     root = @account_token.get '/'
     session[:url] = root._links.account.href
     funding_sources = @account_token.get "#{session[:url]}/funding-sources"
     funding_sources._embedded['funding-sources'][0]['status']
     funding_sources_id = funding_sources._embedded['funding-sources'][0]['id']
 
-
-
-    binding.pry
     if funding_sources._embedded['funding-sources'][0]['status'] == 'verified'
       current_user.dwolla_verified = true
       current_user.account_url = funding_sources._embedded['funding-sources'][0]['_links']['self']['href']

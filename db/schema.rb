@@ -175,6 +175,8 @@ ActiveRecord::Schema.define(version: 20170321190512) do
     t.boolean  "fine_owed",           default: false
     t.string   "password_digest",                     null: false
     t.string   "account_url"
+    t.string   "access_token"
+    t.string   "refresh_token"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "sash_id"
