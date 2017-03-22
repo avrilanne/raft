@@ -1,3 +1,6 @@
+
+
+
 <div class="container center">
 <img class="prof">
 <%= image_tag @user.avatar.url(:thumb), :class=>"circle" %>
@@ -32,19 +35,23 @@
 <div class="card-panel grey lighten-3 center">
 </ul>
 
-<% if current_user.invitations.length > 0 %>
-  <p>Check Out Your Invites!</p>
-
-  <ul>
-    <% current_user.invitations.each do |invitation| %>
-      <li>
+<% if current_user.dwolla_verified == true %>
+  <% if current_user.invitations.length > 0 %>
+    <p>Check Out Your Invites!</p>
+    <ul>
+      <% current_user.invitations.each do |invitation| %>
+        <li>
         <%=link_to Group.find_by(id: invitation.group_id).name, group_path(invitation.group_id)  %>
-      </li>
-    <% end  %>
-  </ul>
-<% else %>
+        </li>
+      <% end  %>
+    </ul>
+  <% else %>
     <p>You have no invites...shucks</p>
-<% end %>
+  <% end %>
+<% else %>
+   <%= render partial: 'users/verify' %>
+<% end  %>
+
 </div>
 
 
