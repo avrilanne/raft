@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'memberships#index'
 
-  post "transactions/send_funds"
+  get "transactions/send_funds"
   # put "charge_users"
 
   get "oauth/begin"

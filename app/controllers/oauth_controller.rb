@@ -14,20 +14,19 @@ class OauthController < ApplicationController
   end
 
   def return
-    # binding.pry
+
     @account_token = auth.callback(params)
     root = @account_token.get '/'
-    p session[:url] = root._links.account.href
-    puts "*" * 30
+    session[:url] = root._links.account.href
     funding_sources = @account_token.get "#{session[:url]}/funding-sources"
-    puts "*" * 30
-    p funding_sources._embedded['funding-sources'][0]['status']
-    puts "*" * 30
-    p funding_sources_id = funding_sources._embedded['funding-sources'][0]['id']
+    funding_sources._embedded['funding-sources'][0]['status']
+    funding_sources_id = funding_sources._embedded['funding-sources'][0]['id']
 
     if funding_sources._embedded['funding-sources'][0]['status'] == 'verified'
       current_user.dwolla_verified = true
-      current_user.account_url = session[:url]
+      current_user.account_url = funding_sources._embedded['funding-sources'][0]['_links']['self']['href']
+      current_user.access_token = @account_token.access_token
+      current_user.refresh_token = @account_token.refresh_token
       current_user.save
     end
 
@@ -59,6 +58,7 @@ class OauthController < ApplicationController
 
   def callback
     account_token = auth.callback(params)
+    # session[:account_id] = token.account_id
   end
 
   private

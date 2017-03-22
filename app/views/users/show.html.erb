@@ -34,6 +34,8 @@
   <% end %>
 <% else %>
   <big><p>You Owe Money...</p></big>
+    <p> click this button to send money to the members of {group}</p>
+   <%= link_to "Pay up", transactions_send_funds_path %>
   <% end  %>
 </div>
 

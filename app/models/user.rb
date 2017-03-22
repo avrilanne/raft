@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :username, :email, presence: true
   validates :email, :username, uniqueness: true
 
+  def token
+    $dwolla.tokens.new(access_token: self.access_token, refresh_token: self.refresh_token)
+  end
+
   def answered_for?(poll)
     answers.any? {|v| v.choice.poll == poll}
   end
@@ -55,5 +59,9 @@ class User < ActiveRecord::Base
       end
     end
     return @accounted
+  end
+
+  def is_host?(event)
+    event.host_id == self.id
   end
 end
