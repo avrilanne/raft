@@ -5,7 +5,6 @@ class CreateRsvps < ActiveRecord::Migration
       t.integer :event_id, null: false
       t.boolean :present, default: true
       #changed to present being default
-
       t.timestamps null: false
     end
   end

@@ -50,6 +50,21 @@ class EventsController < ApplicationController
     redirect_to group_events_path, notice: 'Event was successfully destroyed.'
   end
 
+
+  def charge_users
+    event = Event.find_by(id: params[:id])
+    rsvps = event.rsvps
+    absent_users = []
+
+    rsvps.each do |rsvp|
+      if rsvp.present == false
+        absent_user = rsvp.attendee
+        absent_user.fine
+      end
+    end
+    redirect_to :back
+  end
+
   private
 
   def event_params

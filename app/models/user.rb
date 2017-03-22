@@ -26,8 +26,9 @@ class User < ActiveRecord::Base
     answers.any? {|v| v.choice.poll == poll}
   end
 
-   def fine
+  def fine
     self.fine_owed = true
+    self.save
   end
 
   def self.search(search)
