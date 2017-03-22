@@ -110,6 +110,8 @@
         <% if !attendee.accounted_for(@event) && current_user = @event.host%>
           <%= form_for [@event, rsvp = Rsvp.find_by(user_id: attendee.id, event_id: @event.id)], method: :patch do |f|%>
             <%= f.submit "Present",:class => "waves-effect purple lighten-1 btn-xs" %>
+            <!-- add a button here to mark someone absent, route to initiate a transfer, and it will denote that a user has been fined, and can't view certain things until they pay -->
+            <!-- replace event information for user with send_funds route that will pay out to all other raft members -->
           <% end %>
         <% end %>
       </li>

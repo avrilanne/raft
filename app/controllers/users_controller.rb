@@ -31,7 +31,21 @@ class UsersController < ApplicationController
   def show
     @user = find_user
     @groups = @user.groups
+
     # redirect_to user_memberships_path(@user)
+
+    # if @user.dwolla_verified == true
+        # show the current user page
+    # else
+      # show a message that they have to register, and redirect to '/oauth/begin'
+    # end
+
+    # PSEUDOCODE for USER VIEW
+    # if user.fine-owed == true
+      # hide upcoming events snippets and routes
+      # replace with a button to send funds to raft members
+    # else
+      # they can see everything
   end
 
   def edit

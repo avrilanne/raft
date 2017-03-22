@@ -26,8 +26,12 @@ class RsvpsController < ApplicationController
   def update
     p params
     @rsvp = Rsvp.find_by(id: params[:id])
-    @rsvp.update_attributes(present: true)
-    redirect_to :back
+     if @rsvp.update_attributes(present: true)
+      redirect_to :back
+    else
+      # show some kind of alert to the host or current user,
+      # set fined boolean true, trigger some events for user
+    end
   end
 
   def destroy
