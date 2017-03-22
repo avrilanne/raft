@@ -16,10 +16,31 @@ class PollsController < ApplicationController
   def create
     questions_array = ["location", "date", "time"]
     counter = 0
-    p "********************"
-    p params["poll_array"]
-    p "*********************"
     params["poll_array"].each do |poll|
+      if counter == 1
+        poll = Poll.create(poll_params(poll))
+        poll.group_id = session[:group_id]
+        poll.event_id = session[:event_id]
+        poll.question = questions_array[counter]
+        poll.save
+        poll.choices.each_with_index do |each_choice, i|
+          poll.choices[i].title = Chronic.parse(each_choice.title).strftime("%B %d, %Y")
+        end
+        counter += 1
+    elsif counter == 2
+        poll = Poll.create(poll_params(poll))
+        poll.group_id = session[:group_id]
+        poll.event_id = session[:event_id]
+        poll.question = questions_array[counter]
+        poll.save
+        poll.choices.each_with_index do |each_choice, i|
+          poll.choices[i].title = Chronic.parse(each_choice.title).strftime("%I:%M %p")
+          p "**********************"
+          p poll.choices[i]
+          p "**********************"
+        end
+        counter += 1
+    else
       poll = Poll.create(poll_params(poll))
       poll.group_id = session[:group_id]
       poll.event_id = session[:event_id]
@@ -27,6 +48,8 @@ class PollsController < ApplicationController
       poll.save
       counter += 1
     end
+  end
+
     redirect_to group_path(session[:group_id])
   end
 

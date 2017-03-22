@@ -46,16 +46,9 @@
       };
 
       function initAutocomplete() {
-        // Create the autocomplete object, restricting the search to geographical
-        // location types.
         autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-            {types: ['establishment']});
+            (document.getElementById('autocomplete'))  );
 
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-
-        // autocomplete.addListener('place_changed', fillForm);
         $(".location_button").on("click", function(event){
           event.preventDefault()
           var i = 0
@@ -70,9 +63,8 @@
           var n = num.toString();
         $("#fieldarray" + i).val(place.name + "," + place.formatted_address)
         $("#autocomplete").val("")
-})
-
-        }
+  })
+}
 
       function geolocate() {
         if (navigator.geolocation) {
@@ -92,9 +84,6 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_API_KEY"] %>&libraries=places&callback=initAutocomplete"
         async defer></script>
-
-
-
 
 <div class="container">
 

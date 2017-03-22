@@ -45,6 +45,7 @@ GEM
     bootstrap_form (2.6.0)
     builder (3.2.3)
     byebug (9.0.6)
+    chronic (0.10.2)
     climate_control (0.1.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
@@ -249,6 +250,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootstrap_form
   byebug
+  chronic
   cocoon
   coffee-rails (~> 4.1.0)
   dotenv-rails

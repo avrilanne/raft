@@ -35,7 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry'
 gem 'rake', '~> 12.0.0'
 gem 'jquery-ui-rails'
-
+gem 'chronic'
 gem "paperclip", "~> 5.0.0"
 # Use Unicorn as the app server
 # gem 'unicorn'
