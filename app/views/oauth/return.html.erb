@@ -1,19 +1,4 @@
 <h1>You're back from Dwolla!</h1>
 
-<p>Your OAuth token is: <%= session[:token] %></p>
+<p>Your OAuth token is:</p>
 <p>Now try some fun API methods...</p>
-
-<hr>
-
-<h3>Send Money!  (Transactions.Send)</h3>
-<p>Send some money to our Reflector account.  We'll send it right back to you.</p>
-
-<%= form_tag((url_for controller: 'transactions', action: 'send_funds'), method: "post") do %>
-  <%= label_tag(:amount, "Amount to Send:") %>
-  $<%= text_field_tag(:amount) %>
-
-  <%= label_tag(:pin, "PIN:") %>
-  <%= password_field_tag(:pin) %>
-
-  <%= submit_tag("Send!") %>
-<% end %>

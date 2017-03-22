@@ -26,7 +26,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'dwolla-ruby', "~> 2.5.1"
+# gem 'dwolla-ruby', "~> 2.5.1"
 gem 'dwolla_v2', '~> 1.2'
 gem 'dotenv-rails'
 gem 'public_suffix'
