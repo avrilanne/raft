@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 
 
   def show
+
     @user = find_user
     @groups = @user.groups
     # redirect_to user_memberships_path(@user)
