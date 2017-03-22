@@ -8,7 +8,9 @@ class EventsController < ApplicationController
     @event = Event.find_by(id: params[:id])
     @poll = Poll.find_by(event_id: @event.id)
     @events_polls = @event.polls
-    @raft = Group.find_by(id: params[:group_id])
+    @raft = @event.group
+    p "this is the raft!!!!!"
+    p @raft
     @rsvp = Rsvp.find_by(user_id: current_user.id, event_id: params[:id])
   end
 
@@ -18,7 +20,6 @@ class EventsController < ApplicationController
   end
 
   def create
-
     @event = Event.new(event_params)
     @event.host_id = current_user.id
     @event.group_id = params[:group_id]

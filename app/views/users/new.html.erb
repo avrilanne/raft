@@ -1,7 +1,7 @@
 <h6 class="center"><i>Create an Account with Raft</i></h6>
 <br>
 <div class="container center">
-  <span class="border-0">
+
 
   <div class="alert-danger">
     <% if @errors %>
@@ -13,7 +13,7 @@
     </ul>
     <% end %>
 </div>
-
+ <div class="card-panel grey lighten-3">
     <%= form_for :user, :html => {:class => "form-horizontal"}, url: '/users' do |f| %>
     <div class="form-group">
       <%= f.label :first_name, "First Name:", class: "col-sm-2 control-label" %>
@@ -38,5 +38,5 @@
     </div>
     <% end %>
   </div>
-</span>
+</div>
 </div>

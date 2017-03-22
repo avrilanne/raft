@@ -34,6 +34,7 @@
 <div class="card-panel grey lighten-3 center">
   <p class="center">Raft Members</p>
   <% @members.each do |member| %>
+  <%= image_tag member.avatar.url(:thumb), :class=>"circle" %>
   <i><p class="center"><%= member.first_name %></p></i>
   <% end  %>
 
@@ -51,7 +52,7 @@
   <h5>Events!</h5>
   <%  @events.each do |event| %>
   <ul>
-    <%= link_to event.name, group_event_path(@group, event), :style => "color: white; text-decoration: underline;" %>
+    <%= link_to event.name, group_event_path(@group, event), :style => "color: black; text-decoration: underline;" %>
   </ul>
   <% end %>
   <%= link_to "new event", new_group_event_path(@group), :class => "waves-effect purple lighten-1 btn"  %>

@@ -20,10 +20,6 @@
  *= require rails_bootstrap_forms
  */
 
-/* .card-panel {
-  border-style: solid;
-  border-size: .2px;
- }*/
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -174,6 +170,41 @@ html {
         }
 
 
+.talkbubble {
+  position: relative;
+  width: 220px;
+  height: 60px;
 
+  padding: 10px;
+  border-radius: 5px;
+  border: solid lightblue;
+  background: lightblue;
+}
+
+.talkbubble:before {
+  content:"";
+  position: absolute;
+  right: 100%;
+  top: 26px;
+  width: 0;
+  height: 0;
+
+  border-top: 13px solid transparent;
+  border-right: 26px solid lightblue;
+  border-bottom: 13px solid transparent;
+}
+
+.talkbubble textarea {
+  position: inherit;
+  width: inherit;
+  height: inherit;
+  background: inherit;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  resize: none;
+}
         /*???????????*/
 

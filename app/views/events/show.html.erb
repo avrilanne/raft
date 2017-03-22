@@ -1,15 +1,5 @@
-<div class="container">
+<div class="container center">
 
-
-
-
-
-<p>Add some links back to the raft page and one back to all raft index</p>
-
-<p> Testing methods... </p>
-<%= user_has_voted(current_user, @event) %>
-<%= raft_has_voted(@event, @raft) %>
-<p> *************** </p>
 <% if user_has_voted(current_user, @event)%>
 
 <%if !current_user.rsvp?(@event) %>
@@ -27,11 +17,21 @@
 <h5 class="center">
   <%= @event.name %>
 </h5>
-  <div class="card-panel teal">
+<div class="card-panel grey lighten-3 center">
     <% if @event.polls.length == 3 %>
-      <p> The leading event details are <%= highest_choice(@events_polls[0]).split(",")[0] %> on <%= highest_choice(@events_polls[1]) %> at <%= highest_choice(@events_polls[2]) %> </p>
-    <% end %>
-  </div>
+
+<% if raft_has_voted(@event, @raft) %>
+<p> Final Details : </p>
+<% else %>
+<p> So far it looks like.... </p>
+<% end %>
+
+    <p> Location: <%=highest_choice(@events_polls[0]).split(",")[0] %> </p>
+    <p> Date: <%=highest_choice(@events_polls[1])%> </p>
+    <p> Time: <%=highest_choice(@events_polls[2]) %> </p>
+
+<% end %>
+</div>
 
 
 
@@ -93,21 +93,23 @@
             </body>
     </html>
 
-
-
-
-
-
-
-<div class="card-panel orange">
+<div class="card-panel grey lighten-3 center">
   <ul class-"attendees">
     <p> Who's going? </p>
+
+    <% if current_user = @event.host %>
+        <div class="talkbubble">
+        <textarea> <%= current_user.first_name %>,  as the host, you can mark your fellow rafters present!</textarea>
+      </div>
+    <% end %>
+    <br>
     <% @event.attendees.each do |attendee| %>
       <li>
+        <%= image_tag attendee.avatar.url(:tiny), :class=>"circle" %>
         <%= attendee.first_name%> <%=attendee.last_name %>
-        <% if !attendee.accounted_for(@event) %>
+        <% if !attendee.accounted_for(@event) && current_user = @event.host%>
           <%= form_for [@event, rsvp = Rsvp.find_by(user_id: attendee.id, event_id: @event.id)], method: :patch do |f|%>
-            <%= f.submit "Present" %>
+            <%= f.submit "Present",:class => "waves-effect purple lighten-1 btn-xs" %>
           <% end %>
         <% end %>
       </li>
@@ -116,18 +118,23 @@
 </div>
 
 
-<div class= "comments card-panel lime">
+<div class="card-panel grey lighten-3">
 
 <%= render partial: '/comments/new_event', locals: { commentable: @event } %>
+</div>
 
+<% if @event.comments.all.length > 0 %>
+<div class="list-group">
+<p>Comments:</p>
 <% @event.comments.limit(3).each do |comment| %>
-<p> <%= comment.body %> </p>
-<em><%= comment.author.username %></em>
+<p class="list-group-item"> <%= comment.body %>
+<em> ~ <%= comment.author.username %></em> <%= comment.created_at.strftime("-- %m/%d/%Y") %>
+</p>
 <% end %>
 
 </div>
 <% end %>
-
+<% end %>
 </div>
 <%= render partial: 'polls/answer_form' %>
 </div>
