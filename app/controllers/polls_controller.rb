@@ -24,8 +24,11 @@ class PollsController < ApplicationController
         poll.question = questions_array[counter]
         poll.save
         poll.choices.each_with_index do |each_choice, i|
-          poll.choices[i].title = Chronic.parse(each_choice.title).strftime("%B %d, %Y")
+          if Chronic.parse(each_choice.title).exists
+            poll.choices[i].title = Chronic.parse(each_choice.title).strftime("%B %d, %Y")
+          end
         end
+        poll.save
         counter += 1
     elsif counter == 2
         poll = Poll.create(poll_params(poll))
@@ -34,11 +37,11 @@ class PollsController < ApplicationController
         poll.question = questions_array[counter]
         poll.save
         poll.choices.each_with_index do |each_choice, i|
-          poll.choices[i].title = Chronic.parse(each_choice.title).strftime("%I:%M %p")
-          p "**********************"
-          p poll.choices[i]
-          p "**********************"
+          if Chronic.parse(each_choice.title).exists
+            poll.choices[i].title = Chronic.parse(each_choice.title).strftime("%I:%M %p")
+          end
         end
+        poll.save
         counter += 1
     else
       poll = Poll.create(poll_params(poll))
