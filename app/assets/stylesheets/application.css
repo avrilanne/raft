@@ -63,8 +63,9 @@
 }
 
 body {
-  color: black;
-  font-family: "tahoma";
+  color: #435075;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #DEE7E9;
 }
 
 #autocomplete {
@@ -75,11 +76,19 @@ html {
   padding: 10px;
 }
 
+.btn {
+  background-color: #22B9DD;
+}
+
+.btn-success {
+  background-color: #22B9DD;
+}
+
 
 .button {
   font: bold 11px Arial;
   text-decoration: none;
-  background-color: #EEEEEE;
+  background-color: #22B9DD;
   color: #333333;
   padding: 2px 6px 2px 6px;
   border-top: 1px solid #CCCCCC;
@@ -168,6 +177,8 @@ html {
         #target {
           width: 345px;
         }
+
+
 
 
 .talkbubble {

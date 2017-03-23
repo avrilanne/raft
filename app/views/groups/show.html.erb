@@ -1,6 +1,8 @@
 <div class="container center">
 <div class="title center">
   <h5 class="center"> <%=@group.name%></h5>
+  <%= link_to "new event", new_group_event_path(@group), :class => "waves-effect btn"  %>
+
 
 
 <% if @group.images.length > 0 %>
@@ -19,16 +21,7 @@
 <% end %>
 </div>
 <br>
-<p> Upload photos of the Raft!</p>
-<%= form_for @image, url: group_images_path(@group) do |form| %>
-<label class="btn btn-default purple lighten-1 btn-file">
-  Choose File
-  <%= form.file_field :group_image %>
-    </label>
-    <br>
-    <br>
-  <%= form.submit 'Add Photos of the Raft', :class => 'btn-success' %>
-<% end %>
+
 
 
 <div class="card-panel grey lighten-3 center">
@@ -41,7 +34,7 @@
   <% if @invitation.length > 0 %>
     <%= form_for :membership, url: user_memberships_path(current_user.id) do |f| %>
       <%= f.hidden_field(:group_id, value: @group.id) %>
-      <%= f.submit "Join In!", :class => "waves-effect purple lighten-1 btn" %>
+      <%= f.submit "Join In!", :class => "waves-effect btn" %>
     <% end %>
   <% end %>
 
@@ -49,7 +42,7 @@
 
 <div class="card-panel grey lighten-3 center">
 
-  <h5>Events!</h5>
+  <h5>Raft Events</h5>
   <% if @events.length > 0 %>
   <%  @events.each do |event| %>
   <ul>
@@ -59,27 +52,33 @@
   </ul>
   <% end %>
     <% end %>
-  <%= link_to "new event", new_group_event_path(@group), :class => "waves-effect purple lighten-1 btn"  %>
 </div>
 
 <div class="card-panel grey lighten-3 center">
-  <h6 class="title-text"><strong>Invite friends onto your Raft</strong></h6>
   <%= form_tag :_invitations, :method => 'get' do %>
   <p class="friend-search center">
-    <label>Find Friends by username: </label>
+    <label>Search For Friends by Username: </label>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil, :class => "waves-effect purple lighten-1 btn"  %>
+    <%= submit_tag "Search", :name => nil, :class => "waves-effect btn"  %>
   </p>
   <% end %>
   </div>
 </div>
 
+<div class='center'>
+<%= form_for @image, url: group_images_path(@group) do |form| %>
+  <label class="btn btn-default btn-file">
+    Add Photos
+    <%= form.file_field :group_image %>
+  </label>
+  <%= form.submit 'Upload', :class => 'btn-success' %>
+<% end %>
+</div><br><br>
 
-<div class= "comments grey lighten-2">
-
-<%= render partial: '/comments/new_group', locals: { commentable: @group } %>
-
+<div class="card-panel grey lighten-3">
+  <%= render partial: '/comments/new_event', locals: { commentable: @group } %>
 </div>
+
 <div class="list-group">
 <p>Comments:</p>
 <% @group.comments.limit(3).each do |comment| %>

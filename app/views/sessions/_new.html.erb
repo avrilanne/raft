@@ -1,4 +1,4 @@
-  <h5 class="center"> Login to Raft™! </h5>
+
   <div class="alert-danger">
       <% if @errors %>
     <span>Something went wrong:</span>
@@ -10,7 +10,7 @@
       <% end %>
 </div>
 
- <div class="card-panel grey lighten-3">
+ <div >
     <%= form_for :session, :html => {:class => "form-horizontal"}, url: '/sessions' do |f| %>
       <div class="form-group">
       <%= f.label :email, "Email:", class: "col-sm-2 control-label" %>
@@ -19,7 +19,7 @@
       <div class="form-group">
       <%= f.label :password, "Password:", class: "col-sm-2 control-label" %>
       <%= f.password_field :password, class: 'form-inline' %><br>
-      <%= f.submit "Login!", class: "waves-effect purple lighten-1 btn" %>
+      <%= f.submit "Login", class: "waves-effect btn" %>
       </div>
       <% end %>
 

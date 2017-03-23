@@ -7,16 +7,11 @@ class RsvpsController < ApplicationController
     puts "THESE ARE YOUR PARAMS"
     @rsvp = Rsvp.new(user_id: current_user.id, event_id: params[:event_id])
 
-    respond_to do |format|
       if @rsvp.save
-        format.html {redirect_to :back, notice: "Ahoy!"}
-        format.js {}
-        format.json { render :show, status: :created, location: @rsvp}
+        redirect_to :back
       else
-        format.html {redirect_to :back}
-        format.json {render json: @rsvp.errors, status: :unprocessable_entity }
+        redirect_to :back
       end
-    end
   end
 
   def edit
@@ -29,8 +24,7 @@ class RsvpsController < ApplicationController
      if @rsvp.update_attributes(present: false)
       redirect_to :back
     else
-      # show some kind of alert to the host or current user,
-      # set fined boolean true, trigger some events for user
+      redirect_to :back
     end
   end
 

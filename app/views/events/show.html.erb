@@ -2,42 +2,38 @@
 
 <% if user_has_voted(current_user, @event)%>
 
-<%if !current_user.rsvp?(@event) %>
-  <div class="rsvp-drsvp">
-    <%= form_for [@event, Rsvp.new], method: :post,  remote: true, :html => {:id => "rsvp-btn"} do |f|  %>
-      <%= f.submit "GET ON BOARD!",:class => "waves-effect purple lighten-1 btn" %>
-    <% end  %>
-<% else %>
-    <%= form_for [@event, @rsvp], method: :delete,  remote: true, :html => {:id => "drsvp-btn"} do |f|  %>
-      <%= f.submit "Hop on off",:class => "waves-effect purple lighten-1 btn" %>
-    <% end  %>
-  </div>
+  <%if !current_user.rsvp?(@event) %>
+    <div class="rsvp-drsvp">
+      <%= form_for [@event, Rsvp.new], method: :post do |f|  %>
+        <%= f.submit "Join Event",:class => "waves-effect btn" %>
+      <% end  %>
+  <% else %>
+      <%= form_for [@event, @rsvp], method: :delete do |f|  %>
+        <%= f.submit "Cancel RSVP",:class => "waves-effect btn" %>
+      <% end  %>
+    </div>
+  <% end %>
 <% end %>
 
-<h5 class="center">
-  <%= @event.name %>
-</h5>
+<h5 class="center"><%= @event.name %></h5>
+
+
 <div class="card-panel grey lighten-3 center">
-    <% if @event.polls.length == 3 %>
-
-<% if raft_has_voted(@event, @raft) %>
-<p> Final Details : </p>
-<% else %>
-<p> So far it looks like.... </p>
-<% end %>
-
+  <% if @event.polls.length == 3 %>
+    <% if raft_has_voted(@event, @raft) %>
+      <p> Final Details : </p>
+    <% else %>
+      <p> So far it looks like.... </p>
+    <% end %>
     <p> Location: <%=@highest_location.split(",")[0] %> </p>
     <p> Date: <%=@highest_date%> </p>
     <p> Time: <%=@highest_time %> </p>
-
-
-<% if current_user = @event.host %>
-  <%= form_for @event, method: :delete do |f| %>
-  <%= f.submit "Delete" %>
+    <% if current_user = @event.host %>
+      <%= form_for @event, method: :delete do |f| %>
+       <%= f.submit "Delete", :class => "waves-effect btn" %>
+      <% end %>
+    <% end %>
   <% end %>
-  <% end %>
-
-<% end %>
 </div>
 
 
@@ -56,8 +52,6 @@
       if (status == google.maps.GeocoderStatus.OK) {
         var latitude = results[0].geometry.location.lat();
         var longitude = results[0].geometry.location.lng();
-        // initialize(latitude,longitude);
-    // function initialize(latitude,longitude) {
 
         var latlng = new google.maps.LatLng(latitude,longitude);
 
@@ -109,9 +103,7 @@
         <%= attendee.first_name%> <%=attendee.last_name %>
         <% if attendee.accounted_for(@event) && current_user = @event.host%>
           <%= form_for [@event, rsvp = Rsvp.find_by(user_id: attendee.id, event_id: @event.id)], method: :patch do |f|%>
-            <%= f.submit "Absent",:class => "waves-effect purple lighten-1 btn-xs" %>
-            <!-- add a button here to mark someone absent, route to initiate a transfer, and it will denote that a user has been fined, and can't view certain things until they pay -->
-            <!-- replace event information for user with send_funds route that will pay out to all other raft members -->
+            <%= f.submit "Absent",:class => "waves-effect btn-xs" %>
           <% end %>
         <% end %>
       </li>
@@ -121,24 +113,21 @@
 
 
 <div class="card-panel grey lighten-3">
-
-<%= render partial: '/comments/new_event', locals: { commentable: @event } %>
+  <%= render partial: '/comments/new_event', locals: { commentable: @event } %>
 </div>
 
 <% if @event.comments.all.length > 0 %>
-<div class="list-group">
-<p>Comments:</p>
-<% @event.comments.limit(3).each do |comment| %>
-<p class="list-group-item"> <%= comment.body %>
-<em> ~ <%= comment.author.username %></em> <%= comment.created_at.strftime("-- %m/%d/%Y") %>
-</p>
+  <div class="list-group">
+    <p>Comments:</p>
+    <% @event.comments.limit(3).each do |comment| %>
+      <p class="list-group-item"> <%= comment.body %>
+        <em> ~ <%= comment.author.username %></em> <%= comment.created_at.strftime("-- %m/%d/%Y") %>
+        </p>
+    <% end %>
+  </div>
 <% end %>
 
 </div>
-<% end %>
-<% end %>
-</div>
-<%= render partial: 'polls/answer_form' %>
 </div>
 <b>
 
