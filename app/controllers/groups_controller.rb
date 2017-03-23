@@ -29,10 +29,6 @@ class GroupsController < ApplicationController
     else
       redirect_to root_path
     end
-    # respond_to do |format|
-    #   format.html {redirect_to group_path(@group)}
-    #   format.js {}
-    # end
   end
 
   private
