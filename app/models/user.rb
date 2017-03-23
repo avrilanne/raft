@@ -64,4 +64,8 @@ class User < ActiveRecord::Base
   def is_host?(event)
     event.host_id == self.id
   end
+
+  def is_invited?(invitation)
+    self.id == invitation.user_id
+  end
 end

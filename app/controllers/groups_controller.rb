@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
   def show
     @comment = Comment.new
     @group = Group.find_by(id: params[:id])
-    if @group != nil && @group.members.include?(current_user)
+    if @group != nil ## make sure that the person.is_invited & or is member
       @members = @group.members
       @events = @group.events
       @invitation = Invitation.where("group_id = #{@group.id} AND recipient_id = #{current_user.id}")
