@@ -1,7 +1,7 @@
 class OauthController < ApplicationController
   def begin
     # declare the URL where the user will be sent to after granting permission to your app:
-    return_url = "http://localhost:3000/oauth/return"
+    return_url = "http://raft2k17.herokuapp.com/oauth/return"
 
 
     logger.info return_url
@@ -30,16 +30,6 @@ class OauthController < ApplicationController
       current_user.save
     end
 
-    # session[:token] = @account_token
-    # extract verification code from GET querystring param "code":
-    # verify_code = params[:code]
-
-    # logger.info verify_code
-    # # declare the same URL from step 1:
-    # return_url = url_for action: 'return'
-
-    # logger.info return_url
-    # session[:token] = Dwolla::OAuth.get_token(verify_code, return_url)
     ## WORKED:
     # root = @account_token.get "/"
     #account_url = root._links.account.href  --source and destination of transf
@@ -64,7 +54,7 @@ class OauthController < ApplicationController
   private
 
   def auth
-     return_url = "http://localhost:3000/oauth/return"
+     return_url = "http://raft2k17.herokuapp.com/oauth/return"
     $dwolla.auths.new redirect_uri: return_url, scope: "accountinfofull|balance|send|funding", state: session[:state] ||= SecureRandom.hex
   end
 end

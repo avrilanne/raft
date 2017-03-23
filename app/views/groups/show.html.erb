@@ -63,14 +63,14 @@
   </p>
   <% end %>
   </div>
-</div>
-
 <div class='center'>
 <%= form_for @image, url: group_images_path(@group) do |form| %>
   <label class="btn btn-default btn-file">
     Add Photos
     <%= form.file_field :group_image %>
   </label>
+  <br>
+  <br>
   <%= form.submit 'Upload', :class => 'btn-success' %>
 <% end %>
 </div><br><br>
@@ -89,6 +89,8 @@
 </div>
 
 </div>
+</div>
+
 
 
 

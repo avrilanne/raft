@@ -15,9 +15,9 @@
   <%= form.submit 'Upload', :class => 'btn-success' %>
 <% end %>
 
-<div class="card-panel grey lighten-3 center">
   <% if current_user.fine_owed != true %>
     <% if @groups.length > 0 %>
+  <div class="card-panel grey lighten-3 center">
       <p>Rafts You're Ridin'</p>
         <ul>
       <% @groups.each do |group| %>
@@ -52,12 +52,12 @@
   <% end  %>
 </div>
 
-
+<% if current_user.dwolla_verified == true %>
  <div class="card-panel grey lighten-3">
   <%= render partial: '/groups/new' %>
 
 </div>
-
+<% end  %>
 <% if current_user.upcoming_events.length > 0 %>
 <div class="card-panel grey lighten-3 center">
 <p> Upcoming Events </p>

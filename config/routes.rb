@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :groups, except: [:index, :destroy] do
     resources :events, except: [:index]
     resources :comments
-    resources :invitations
+    resources :invitations, only: [:show, :index]
     resources :images
   end
 
