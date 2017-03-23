@@ -8,41 +8,33 @@
 </img>
 <br>
 <%= form_for @user, :url => { :action => "update" } do |form| %>
-<label class="btn btn-default purple lighten-1 btn-file">
-  Choose File
+<label class="btn btn-default btn-file">
+  Select a Profile Picture
   <%= form.file_field :avatar%>
-  </label>
-  <br>
-  <br>
-  <%= form.submit 'Add Avatar', :class => 'btn-success' %>
+  </label><br><br>
+  <%= form.submit 'Upload', :class => 'btn-success' %>
 <% end %>
 
-<div class="card-panel grey lighten-3 center">
-  <h5 class="center"> Hey <%= @user.first_name %>! </h5>
-</div>
-
-<div class="card-panel grey lighten-3 center">
   <% if current_user.fine_owed != true %>
+<div class="card-panel grey lighten-3 center">
     <% if @groups.length > 0 %>
-      <p>Rafts you're a ridin'</p>
+      <p>Rafts You're Ridin'</p>
         <ul>
       <% @groups.each do |group| %>
-        <p><%= link_to group.name, group_path(group), :class =>"waves-effect blue darken-4 btn" %></p>
+        <p><%= link_to group.name, group_path(group), :class =>"waves-effect btn" %></p>
       <% end  %>
-    <% else %>
-  <p class="center">You have no Rafts yet...Come on!!!</p>
   <% end %>
 <% else %>
   <big><p>You Owe Money...</p></big>
     <p> click this button to send money to the members of {group}</p>
    <%= link_to "Pay up", transactions_send_funds_path %>
-  <% end  %>
 </div>
+  <% end  %>
 
-<div class="card-panel grey lighten-3 center">
 </ul>
 
   <% if current_user.dwolla_verified == true %>
+<div class="card-panel grey lighten-3 center">
     <% if current_user.invitations.length > 0 %>
       <p>Check Out Your Invites!</p>
       <ul>
@@ -57,12 +49,8 @@
     <% end %>
   <% else %>
      <%= render partial: 'users/verify' %>
-  <% end  %>
-
-
 </div>
-
-
+  <% end  %>
  <div class="card-panel grey lighten-3">
   <%= render partial: '/groups/new' %>
 
@@ -77,21 +65,6 @@
 </div>
  <% end %>
 </div>
-
-<!-- avrils just playing -->
-<!-- <div class="recent-activity card-panel blue">
-<p>
-Recent Activity:
-</p>
-<%#= current_user.groups.find(1).name %>
-<#%# current_user.groups.find(1).comments.limit(3).each do |comment| %>
-
-<p> <#%#= comment.body %> </p>
-<em><#%#= comment.author.username %></em>
-<#% end %> -->
-
-<!-- avril -->
-
 
 
 

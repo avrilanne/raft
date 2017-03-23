@@ -117,7 +117,7 @@
     <br>
     <br>
     <br>
-    <button class="location_button btn btn-default purple lighten-1">Add Location</button>
+    <button class="location_button btn btn-default ">Add Location</button>
     <br>
       <%= fields_for 'poll_array[]', poll do |p| %>
      <%= p.hidden_field :question, value: 'location' %><br>
@@ -145,7 +145,7 @@
     <% end %>
     <%  counter += 1 %>
   <% end %>
-    <%= f.submit "Submit Poll!",:class => "waves-effect purple lighten-1 btn" %>
+    <%= f.submit "Submit Poll!",:class => "waves-effect btn" %>
 </div>
   <% end %>
 </div>

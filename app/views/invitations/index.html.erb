@@ -8,7 +8,7 @@
         <%= form_for Invitation.new, url: "/groups/#{@group.id}/invitations", method: "post" do |f| %>
         <%= f.hidden_field :sender_id, :value => current_user.id %>
          <%= f.hidden_field :recipient_id, :value => user.id %>
-        <%= f.submit "Send Invite",:class => "waves-effect purple lighten-1 btn-xs" %>
+        <%= f.submit "Send Invite",:class => "waves-effect btn-xs" %>
         <br>
       </li>
       <br>
