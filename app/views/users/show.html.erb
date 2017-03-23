@@ -15,8 +15,8 @@
   <%= form.submit 'Upload', :class => 'btn-success' %>
 <% end %>
 
-  <% if current_user.fine_owed != true %>
 <div class="card-panel grey lighten-3 center">
+  <% if current_user.fine_owed != true %>
     <% if @groups.length > 0 %>
       <p>Rafts You're Ridin'</p>
         <ul>
@@ -28,13 +28,13 @@
   <big><p>You Owe Money...</p></big>
     <p> click this button to send money to the members of {group}</p>
    <%= link_to "Pay up", transactions_send_funds_path %>
-</div>
   <% end  %>
+</div>
 
 </ul>
 
-  <% if current_user.dwolla_verified == true %>
 <div class="card-panel grey lighten-3 center">
+  <% if current_user.dwolla_verified == true %>
     <% if current_user.invitations.length > 0 %>
       <p>Check Out Your Invites!</p>
       <ul>
@@ -49,8 +49,10 @@
     <% end %>
   <% else %>
      <%= render partial: 'users/verify' %>
-</div>
   <% end  %>
+</div>
+
+
  <div class="card-panel grey lighten-3">
   <%= render partial: '/groups/new' %>
 
