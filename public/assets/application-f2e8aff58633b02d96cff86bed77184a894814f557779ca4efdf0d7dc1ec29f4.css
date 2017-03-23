@@ -1,0 +1,232 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ *=
+
+
+ */
+ /*
+
+ */
+
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+.navbar-nav {
+  float:none;
+  margin:0 auto;
+  display: block;
+  text-align: left;
+  color:white;
+}
+
+#carouselExampleSlidesOnly{
+ height: 170px;
+ width: 300px;
+}
+.group-carousel{
+  height: 170px;
+  width: 300px;
+
+}
+.navbar-nav > li {
+  display: inline-block;
+  float:none;
+  color:white;
+}
+
+body {
+  color: #435075;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #DEE7E9;
+}
+
+#autocomplete {
+  width: 300px;
+}
+
+html {
+  padding: 10px;
+}
+
+.btn {
+  background-color: #22B9DD;
+}
+
+.btn-success {
+  background-color: #22B9DD;
+}
+
+
+.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #22B9DD;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+
+#map {
+  height: 100%;
+  overflow: visible;
+}
+/* Optional: Makes the sample page fill the window. */
+  /*    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        }*/
+        #description {
+          font-family: Roboto;
+          font-size: 15px;
+          font-weight: 300;
+        }
+
+        #infowindow-content .title {
+          font-weight: bold;
+        }
+
+        #infowindow-content {
+          display: none;
+        }
+
+        #map #infowindow-content {
+          display: inline;
+        }
+
+        .pac-card {
+          margin: 10px 10px 0 0;
+          border-radius: 2px 0 0 2px;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          outline: none;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+          background-color: #fff;
+          font-family: Roboto;
+        }
+
+        #pac-container {
+          padding-bottom: 12px;
+          margin-right: 12px;
+        }
+
+        .pac-controls {
+          display: inline-block;
+          padding: 5px 11px;
+        }
+
+        .pac-controls label {
+          font-family: Roboto;
+          font-size: 13px;
+          font-weight: 300;
+        }
+
+        #pac-input {
+          background-color: #fff;
+          font-family: Roboto;
+          font-size: 15px;
+          font-weight: 300;
+          margin-left: 12px;
+          padding: 0 11px 0 13px;
+          text-overflow: ellipsis;
+          width: 400px;
+        }
+
+        #pac-input:focus {
+          border-color: #4d90fe;
+        }
+
+        #title {
+          color: #fff;
+          background-color: #4d90fe;
+          font-size: 25px;
+          font-weight: 500;
+          padding: 6px 12px;
+        }
+        #target {
+          width: 345px;
+        }
+
+
+
+
+.talkbubble {
+  position: relative;
+  width: 220px;
+  height: 60px;
+
+  padding: 10px;
+  border-radius: 5px;
+  border: solid lightblue;
+  background: lightblue;
+}
+
+.talkbubble:before {
+  content:"";
+  position: absolute;
+  right: 100%;
+  top: 26px;
+  width: 0;
+  height: 0;
+
+  border-top: 13px solid transparent;
+  border-right: 26px solid lightblue;
+  border-bottom: 13px solid transparent;
+}
+
+.talkbubble textarea {
+  position: inherit;
+  width: inherit;
+  height: inherit;
+  background: inherit;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  resize: none;
+}
+        /*???????????*/
+
+.rails-bootstrap-forms-date-select select,
+.rails-bootstrap-forms-time-select select,
+.rails-bootstrap-forms-datetime-select select {
+  display: inline-block;
+  width: auto;
+}
+
+.rails-bootstrap-forms-error-summary {
+  margin-top: 10px;
+}
