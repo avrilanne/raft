@@ -98,7 +98,7 @@
     <br>
     <% @event.attendees.each do |attendee| %>
       <li>
-        <%= image_tag attendee.avatar.url(:tiny), :class=>"circle" %>
+        <%= image_tag attendee.avatar_file_name, :class=>"circle" %>
         <%= attendee.first_name%> <%=attendee.last_name %>
         <% if attendee.accounted_for(@event) && current_user = @event.host%>
           <%= form_for [@event, rsvp = Rsvp.find_by(user_id: attendee.id, event_id: @event.id)], method: :patch do |f|%>
