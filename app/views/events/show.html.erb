@@ -90,7 +90,7 @@
 <% if current_user.is_host?(@event) %>
   <%= render partial: '/events/charge_users' %>
 <% end %>
-    <% if current_user = @event.host %>
+    <% if current_user == @event.host %>
         <div class="talkbubble">
         <textarea> <%= current_user.first_name %>,  as the host, you can mark your fellow rafters present!</textarea>
       </div>
