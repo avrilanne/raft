@@ -1,5 +1,5 @@
 # Raft
-Project Description
+**Project Description**
 This is our final group project for Dev Bootcamp. Raft is a Ruby on Rails web app that helps groups of friends plan events and stay accountable. 
 
 
